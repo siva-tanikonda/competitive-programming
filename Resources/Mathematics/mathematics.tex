@@ -1,0 +1,118 @@
+\documentclass[12pt]{report}
+\usepackage{mathtools}
+\title{Mathematics for USACO}
+\author{DarkVoid}
+\begin{document}
+\maketitle
+\section{Number Theory}
+\textbf{Basics}\\
+- The prime factorization of a number is essentially a number broken down to all its prime factors and the powers of each of those numbers. It is represented by \(n=\prod_{i=1}^{k}{{p_i}^{\alpha_i}}\).\\
+- The number of factors of a number is represented by \(\tau(n)=\prod_{i=1}^{k}(\alpha_i+1)\).\\
+- The sum of all the factors of a number is represented by \(\sigma(n)=\prod_{i=1}^{k}{\frac{{p_i}^{\alpha_i+1}-1}{p_i-1}}\).\\\\
+\textbf{Prime Counting Function}\\
+Formula: \(\pi(n)\approx\frac{n}{\ln{n}}\)\\
+Description: This is a function to approximate how many primes are in the first \(n\) natural numbers.\\\\
+\textbf{Euclid's Algorithm}\\
+Formula: \(gcd(a,b)=\begin{cases}a&b=0\\gcd(b,a\bmod{b})&b\neq{0}\end{cases}\)\\
+Description: This finds the greatest-common divisor of two numbers. This function can also be used to solve diophantine equation with an altered function.\\\\
+\textbf{Least-Common Multiple}\\
+Formula: \(lca(a,b)=\frac{ab}{gcd(a,b)}\)\\
+Description: This finds the least-common multiple of two numbers.\\\\
+\textbf{Modular Exponentiation}\\
+Formula: \(x^n=\begin{cases}1&n=0\\x^{n/2}*x^{n/2}&n\bmod{2}=0\\x^{n-1}*x&n\bmod{2}=1\end{cases}\)\\
+Description: This calculates exponents quickly.\\\\
+\textbf{Euler's Theorem}\\
+Formula: \(\varphi(n)=\prod_{i=1}^{k}{{p_i}^{\alpha_i-1}(p_i-1)}\)\\
+Description: This finds the number of numbers in \([1,n]\) that are coprime to \(n\).\\\\
+\textbf{Fermat's Little Theorem}\\
+Formula: \(x^{m-1}\bmod{m}=1\)\\
+Description: This identity always holds, only if \(m\) is a prime number.\\\\
+\textbf{Modular Inverse}\\
+Formula: \(inv_m(x)=x^{\varphi(m)-1}\)\\
+Description: This is the formula for the modular inverse, which is the number that you can multiply a modded number by, to essentially do "modular division".\\\\
+\textbf{Solution to Diophantine Equation}\\
+Formula: \((x+\frac{kb}{gcd(a,b)},y-\frac{ka}{gcd(a,b)})\)\\
+Description: This is the formula for the \(k\)-th solution to a diophantine equation. This equation is given in the form of \(ax+by=gcd(a,b)\), and with this, one can easily find the solution by multiplying the coefficients.\\\\
+\textbf{Chinese Remainder Theorem}\\
+Formula: \(x=\sum_{i=1}^{n}{a_iX_iinv_{m_i}(X_i)},X_k=\frac{\prod_{i=1}^{n}{m_i}}{m_k}\)\\
+Description: This is a formula that applies when all values in \(m\) are pairwise coprime. The equations are in the form of \(x=a_1\bmod{m_1},x=a_2\bmod{m_2},\dots,x=a_n\bmod{m_n}\).\\\\
+\section{Combinatorics}
+\textbf{Basics}\\
+- A binomial coefficient is denoted as \(n\choose{k}\), where this represents the number of ways to pick a subset of \(k\) elements from a set of \(n\) elements.\\
+- The formula to calculate a binomial coefficient is \({{n}\choose{k}}={{n - 1}\choose{k - 1}}+{{n - 1}\choose{k}}=\frac{n!}{k!(n - k)!}\).\\
+- A useful rule is that \(\sum_{i=0}^{n}{{n}\choose{i}}=2^n\).\\\\
+\textbf{Mutlinomial Coefficients}\\
+Formula: \({{n}\choose{k_1,k_2,\dots,k_m}}=\frac{n!}{\prod_{i=1}^{m}{{k_i}!}}\)\\
+Description: This gives the number of ways to divide a set of \(n\) elements into subsets of sizes \(k_1,k_2,\dots,k_m\), where \(\sum_{i=1}^{m}{k_i}=n\).\\\\
+\textbf{Catalan Numbers}\\
+Formula: \(C_n=\sum_{i=0}^{n-1}{C_iC_{n-i-1}}=\frac{1}{n+1}{{2n}\choose{n}}\)\\
+Description: This formula calculates the number of ways to create a valid parentheses expression with \(n\) left parenthesese and \(n\) right parentheses.\\\\
+\textbf{Inclusion-Exclusion}\\
+Formula: \(|A\cap{B}|=|A|+|B|-|A\cup{B}|,|A\cap{B}\cap{C}|=|A|+|B|+|C|-|A\cup{B}|-|A\cup{C}|-|B\cup{C}|+|A\cup{B}\cup{C}|\)\\
+Description: This is a formula that always holds for sets that are intersecting.\\\\
+\textbf{Burnside's Lemma}\\
+Formula: \(\frac{1}{n}\sum_{i=1}^{n}{c(i)}\)\\
+Description: This calculates the number of distinct combinations so that symmetric combinations are counted only once. In this formula, \(n\) represents the number of ways to change the position of a combination, and \(c(k)\) represents the number of combinations that remain unchanged when the \(k\)-th way is applied.\\\\
+\textbf{Cayley's Formula}\\
+Formula: \(n^{n - 2}\)\\
+Description: This represents the number of distinctly-labeled trees of \(n\) nodes.\\\\
+\section{Matrices}
+\textbf{Basics}\\
+- A matrix is notated as \(A=\begin{bmatrix}a&b&c\\d&e&f\\g&h&i\end{bmatrix}\).\\
+- The transpose of a matrix is notated as \(A^T\) is where the rows and columns of a matrix are swapped.\\
+- A square matrix is where there are the same number of rows and columns in a matrix.\\
+- The sum of two matrices is only possible if the dimensions of the two matrices are the same, and is notated as \((A+B)[i,j]=A[i,j]+B[i,j]\).\\
+- Multiplying a matrix by a constant is notated as \(kA[i,j]=k*A[i,j]\).\\
+- The product of a matrix is only possible if the width of first matrix is equal to the height of the second matrix, and it is notated as \(AB[i,j]=\sum_{i=1}^{n}(A[i,k]*B[k,j])\).\\
+- An identity matrix is a matrix in the form of \(A=\begin{bmatrix}1&0&\dots&0\\0&1&\dots&0\\\vdots&\vdots&\ddots&\vdots\\0&0&\dots&1\end{bmatrix}\), and multiplying another matrix of valid dimensions by this matrix will not change that matrix.\\
+- Matrix exponentiation is notated as \(A^n\), and this only works with square matrices and it is just essentially recursive matrix multiplication, and \(A^0\) is the identity matrix. You can use the \(O(\lg{n})\) matrix exponentiation algorithm with this as well.\\
+\textbf{Linear Recurrences}\\
+Formula: \(\begin{bmatrix}f(n)\\f(n+1)\\\vdots\\f(n+k-1)\end{bmatrix}=X^n*\begin{bmatrix}f(0)\\f(1)\\\vdots\\f(k-1)\end{bmatrix},X=\begin{bmatrix}0&1&0&\dots&0\\0&0&1&\dots&0\\\vdots&\vdots&\vdots&\ddots&\vdots\\0&0&0&\dots&1\\c_k&c_{k-1}&c_{k-2}&\dots&c_1\end{bmatrix}\)\\
+Description: A linear recurrence is an equation in the form of \(f(n)=\sum_{i=1}^{k}{c_if(n-i)}\). With the formula stated above, terms of this recurrence can be calculated very quickly.\\
+\textbf{Path Lengths}\\
+Formula: \(AB[i,j]=\underset{1\leq{k}\leq{n}}{\max}(A[i,k]+B[k,j])\)\\
+Description: When a graph is represented as an adjacency matrix, and when we get \(A^n\), \(A[i,j]\) represents the number of paths that start at node \(a\) and end at node \(b\), and contain exactly \(n\) edges. But, instead of using the regular multiplication formula, we must use the formula above, and all cells in the matrix with zeros for their path counts should become \(\infty\).\\
+\textbf{Gaussian Elimination}\\
+Formula:\(\begin{matrix}a_{1,1}x_1+a_{1,2}x_2+\dots+a_{1,n}x_n=b_1\\a_{2,1}x_1+a_{2,2}x_2+\dots+a_{2,n}x_n=b_2\\\dots\\a_{n,1}x_1+a_{n,2}x_2+\dots+a_{n,n}x_n=b_n\end{matrix}\Rightarrow\begin{bmatrix}a_{1,1}&a_{1,2}&\dots&a_{1,n}&b_1\\a_{2,1}&a_{2,2}&\dots&a_{2,n}&b_2\\\vdots&\vdots&\ddots&\vdots&\vdots\\a_{n,1}&a_{n,2}&\dots&a_{n,n}&b_n\end{bmatrix}\Rightarrow\begin{bmatrix}1&0&\dots&0&c_1\\0&1&\dots&0&c_2\\\vdots&\vdots&\ddots&\vdots&\vdots\\0&0&\dots&1&c_n\end{bmatrix}\Rightarrow{x_i=c_i}\)\\
+Description: The process above illustrates Gaussian elimination, which is a process used to solve systems of linear equations. You get from the first matrix to the second matrix with the following operations: you can swap the values of two rows, you can multiply each value in a row by a non-negative constant, and you can add a row (multiplied by a constant) to another row.\\
+\section{Probability}
+\textbf{Basics}\\
+- Probability is easily defined as the \(\frac{number\:of\:desired\:outcomes}{total\:number\:of\:outcomes}\).\\
+- The probability of multiple events can be stated as \(P(X)=\sum_{x\in{X}}^{}{p(x)}\).\\
+- The complement of an event is defined as \(P(\overline{A})=1-P(A)\).\\
+- The union of two probabilities is the same as the inclusion-exclusion algorithm.\\
+- The intersection of two events is defined as \(P(A\cap{B})=P(A)P(B|A)\).\\
+- Two events, \(A\) and \(B\), are independent if \(P(A|B)=P(A)\) and \(P(B|A)=P(B)\). In this case, the probability is \(P(A\cap{B})=P(A)P(B)\).\\\\
+\textbf{Expected Value}\\
+- In expected value, \(X\), is the sum of the outcomes.\\
+- The expected value is calculated as \(\sum_{x}^{}{P(X=x)x}\).\\
+- The expected value formula follows linearity, so \(E[\sum_{i=1}^{n}{X_i}]=\sum_{i=1}^{n}{E[X_i]}\).\\
+- In a uniform distribution, \(X\) has \(n\) possible values (\(a,a+1,\dots,b\)), and the probability of each event is \(1/n\). The expected value in such a distrubution is \(E[X]=\frac{a+b}{2}\).\\
+- In a binomial distribution, \(n\) attempts are made, and the probability that a single attempt succeeds is \(p\). \(X\) counts the number of successful attempts, and the probability of \(x\) is \(P(X=x)=p^x(1-p)^{n-x}{n\choose{x}}\). So, \(E[X]=pn\).\\
+- In a geometric distribution, the probability that an event succeeds is \(p\), and we continue until the first success happens. The variable \(X\) counts the number of attempts needed, and the probability of a value \(x\) is \(P(X=x)=(1-p)^{x-1}p\). So, \(E[X]=\frac{1}{p}\).\\\\
+\textbf{Markov Chains}\\
+Description: A Markov Chain is a random process, where each node represents a state, and the edges represent transitions between those states. With methods such as dynamic programming and matrix multiplication, we can simulate these processes.\\\\
+\textbf{Randomized Algorithms}\\
+- A Monte Carlo Algorithm is an algorithm that may sometimes give a wrong answer, but its running time is constant. So, when using this algorithm, the goal is to optimize the chance of error.\\
+- A Las Vegas Algorithm always gives a right answer, but the program's running time is variable, meaning that the goal is to optimize the average run-time.\\
+\section{Game Theory}
+\textbf{Nim Game}\\
+Formula: \(s=x_1\oplus{x_2}\oplus{x_3}\oplus...\oplus{x_n}\)\\
+Description: Nim is an impartial game, where there are \(n\) stacks of stones, and there are two players. In each turn, a player takes a certain number of stones from a single stack, and this keeps going until there are no stones left. The winner of the game is the player who removes the last stick. With the formula above, given all the heights, \(x\) of the stacks in the game, we can determine whether player 1 is going to win or lose. If \(s=0\), then that state is a losing state and player 2 will win, whereas if \(s\neq{1}\), then that state is a winning state, and player 1 will win.\\\\
+\textbf{Sprague-Grundy Theorem}\\
+Formula: \(mex({g_1,g_2,\dots,g_n})\)\\
+Description: Sprague-Grundy is a theorem that only applies to games where: two players move alternately, the game consists of states (the possible moves in a state don't depend on whose turn it is), the game ends when a player cannot make a move, the game ends, and the players have complete information about the states and allowed moves, and there is no randomness in the game. Given these many criteria, we can simplify every state to the formula above, where \(mex\) represents the minimum-excluded value from the set. If the value is \(0\), then that state is a losing state, or else it's a winning state. If there are multiple sub-games, then getting the nim sum of all those states will give us the Grundy Number of the entire game.\\
+\section{Geometry}
+\textbf{Cross Product}\\
+Formula: \(a\times{b}=x_1y_2-x_2y_1\)\\
+Description: This formula is the formula for the cross-product of two vectors, and if this is greater than \(0\), then the second vector turns to the left of the first one, if it equals \(0\) then they both are in the same direction, and if it is less than \(0\), then the second vector turns to the right of the first one.\\\\
+\textbf{Area of a Triangle}\\
+Formula: \(A=\frac{|(a-c)\times(b-c)|}{2}\)\\
+Description: This calculates the area of a triangle, where \(a\), \(b\), and \(c\) are the vectors for the points of the triangle.\\\\
+\textbf{Shoelace Formula}\\
+Formula: \(\frac{1}{2}|\sum_{i=1}^{n-1}(p_i\times{p_{i+1}})|\)\\
+Description: This calculates the area of of a polygon on the coordinate plane.\\\\
+\textbf{Distance Functions}\\
+- \(\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\) calculates the Euclidean distance between two points on the coordinate plane.\\
+- \(|x_1-x_2|+|y_1-y_2|\) calculates the Manhattan distance between two points on the coordinate plane.\\
+\end{document}

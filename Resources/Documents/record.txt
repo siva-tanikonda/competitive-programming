@@ -1,0 +1,8 @@
+Indexed Set:
+#include <ext/pb_ds/tree_policy.hpp>
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
+typedef tree<TYPE, null_type, less<TYPE>, rb_tree_tag, tree_order_statistics_node_update> indexed_set;
+
+AtCoder Problem Table:
+https://kenkoooo.com/atcoder/#/table/DarkVoid
