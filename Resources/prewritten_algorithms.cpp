@@ -606,9 +606,21 @@ vector<tuple<int, int, long long>> prim(vector<vector<pair<int, long long>>> &ad
 }
 
 /*
+RANDOM NUMBER GENERATOR
+Purpose: To generate random numbers in a range
+Time Complexity: O(N)
+Space Complexity: O(1)
+*/
+
+int random_number_generator(int a, int b){
+	mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+	return uniform_int_distribution<int>(a, b)(rng);
+}
+
+/*
 ROLLING HASH
 Purpose: This function finds the hash value of a string, and this can be used to find congruent strings
-Time Complexity: O(n)
+Time Complexity: O(N)
 Space Complexity: O(1)
 */
 
@@ -687,7 +699,6 @@ struct sieve_of_eratosthenes{
 			if(prm[i] && (long long)i * i <= n)
 				for(int j = i * i; j <= n; j += i) prm[j] = false;
 	}
-	bool isPrime(int n){ return prm[n]; }
 };
 
 /*
@@ -700,8 +711,7 @@ Space Complexity: O(Nlg(N))
 template<class T> struct sparse_table{
 	vector<vector<T>> jmp;
 	void init(vector<T> &arr){
-		int n = (int)arr.size(), on = 1, dpt = 1;
-		while(on < (int)arr.size()) on *= 2, dpt++;
+		int n = (int)arr.size(), dpt = 32 - __builtin_clz(n);
 		jmp.assign(dpt, arr);
 		for(int i = 0; i < dpt - 1; i++)
 			for(int j = 0; j < n; j++)
