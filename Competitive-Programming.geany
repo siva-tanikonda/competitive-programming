@@ -20,13 +20,15 @@ indent_mode=2
 [project]
 name=Competitive-Programming
 base_path=/home/siva/Desktop/Competitive-Programming
+description=
+file_patterns=
 
 [long line marker]
-long_line_behaviour=1
+long_line_behaviour=0
 long_line_column=72
 
 [files]
-current_page=0
+current_page=-1
 
 [VTE]
-last_dir=/home/siva
+last_dir=/home/siva/Desktop/Competitive-Programming
