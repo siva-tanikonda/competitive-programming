@@ -793,20 +793,25 @@ Time Complexity: O(N + M)
 Space Complexity: O(N)
 */
 
-void dfs(int vtx, vector<bool> &vis, vector<vector<int>> &adj, vector<int> &ans){
-	vis[vtx] = true;
-	for(auto i : adj[vtx])
-		if(!vis[i]) dfs(i, vis, adj);
-	ans.push_back(vtx);
-}
-
 vector<int> topologicalSort(vector<vector<int>> &adj){
-	vector<bool> vis((int)adj.size(), false);
-	vector<int> ans;
-	for(int i = 1; i <= n; i++)
-		if(!vis[i]) dfs(i, vis, adj, ans);
-	reverse(ans.begin(), ans.end());
-	return ans;
+	vector<int> in((int)adj.size(), 0);
+	for(int i = 1; i < (int)adj.size(); i++)
+		for(auto &j : adj[i]) in[j]++;
+	queue<int> que;
+	for(int i = 1; i < (int)adj.size(); i++)
+		if(in[i] == 0) que.push(i);
+	int cnt = 0;
+	vector<int> ord;
+	while(!que.empty()){
+		int vtx = que.front();
+		que.pop();
+		ord.push_back(vtx);
+		for(auto &i : adj[vtx])
+			if(--in[i] == 0) que.push(i);
+		cnt++;
+	}
+	if(cnt != vtx) return {};
+	return ord;
 }
 
 /*

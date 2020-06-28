@@ -11,6 +11,11 @@ if(sys.argv[1] == '-c'):
 			with open('Environment/' + chr(65 + i) + '.cpp', 'w+') as fout:
 				for j in fin:
 					fout.write(j)
+elif(sys.argv[1] == '-a'):
+	with open('Resources/Templates/codeforces.cpp', 'r') as fin:
+		with open('Environment/' + sys.argv[2] + '.cpp', 'w+') as fout:
+			for i in fin:
+				fout.write(i)
 elif(sys.argv[1] == '-d'):
 	for i, j, k in os.walk('Environment'):
 		for l in k:
@@ -21,6 +26,8 @@ elif(sys.argv[1] == '-r'):
 elif(sys.argv[1] == '-ra'):
 	os.system('g++ -std=c++17 -Wshadow -Wall -o Environment/compiled.out Environment/' + sys.argv[2] + '.cpp -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG')
 	os.system('./Environment/compiled.out < Environment/input.txt')
+elif(sys.argv[1] == '-b'):
+	os.system('g++ -std=c++17 -Wshadow -Wall -o Environment/compiled.out Environment/' + sys.argv[2] + '.cpp -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG')
 elif(sys.argv[1] == '-p'):
 	os.system('git add *')
 	os.system('git commit -m ' + date.today().strftime("%m/%d/%Y"))
