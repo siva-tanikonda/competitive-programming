@@ -450,6 +450,69 @@ vector<tuple<long long, int, int>> kruskal(int n, vector<tuple<long long, int, i
 }
 
 /*
+LAZY SEGMENT TREE
+Purpose: To solve range updates and queries quickly (but this only works in select scenarios)
+Time Complexity: [Build]O(N), [Query]O(lg(N)), [Update]O(lg(N))
+Space Complexity: O(N)
+*/
+
+template<class T> struct lazy_segment_tree{
+	vector<T> arr, lazy;
+	int n;
+	void init(int _n){
+		n = _n;
+		arr = vector<T>(_n * 4), lazy = vector<T>(_n * 4);
+	}
+	void init(vector<T> &a){
+		n = (int)a.size();
+		arr = vector<T>((int)a.size() * 4);
+		lazy = vector<T>(n * 4);
+		build(arr, 1, 0, (int)a.size() - 1);
+	}
+	void push(int vtx){
+		arr[vtx * 2] += lazy[vtx];
+		lazy[vtx * 2] += lazy[vtx];
+		arr[vtx * 2 + 1] += lazy[vtx];
+		lazy[vtx * 2 + 1] += lazy[vtx];
+		lazy[vtx] = 0;
+	}
+	void build(vector<T> &a, int vtx, int tl, int tr){
+		if(tl == tr) arr[vtx] = a[tl];
+		else{
+			int mid = (tl + tr) / 2;
+			build(a, vtx * 2, tl, mid);
+			build(a, vtx * 2 + 1, mid + 1, tr);
+			arr[vtx] = arr[vtx * 2] ^ arr[vtx * 2 + 1];
+		}
+	}
+	void update(int l, int r, T add){ fakeUpdate(1, 0, n - 1, l, r, add); }
+	void fakeUpdate(int vtx, int tl, int tr, int l, int r, T add){
+		if(l > r) return;
+		else if(tl == l && tr == r)
+			arr[vtx] += add, lazy[vtx] += add;
+		else{
+			push(vtx);
+			int mid = (tl + tr) / 2;
+			fakeUpdate(vtx * 2, tl, mid, l, min(r, mid), add);
+			fakeUpdate(vtx * 2 + 1, mid + 1, tr, max(l, mid + 1), r, add);
+			arr[vtx] = arr[vtx * 2] ^ arr[vtx * 2 + 1];
+		}
+	}
+	T query(int l, int r){ return fakeQuery(1, 0, n - 1, l, r); }
+	T fakeQuery(int vtx, int tl, int tr, int l, int r){
+		if(l > r) return 0;
+		else if(l <= tl && r <= tr) return arr[vtx];
+		else{
+			push(vtx);
+			int mid = (tl + tr) / 2;
+			int p1 = fakeQuery(vtx * 2, tl, mid, l, min(r, mid));
+			int p2 = fakeQuery(vtx * 2 + 1, mid + 1, tr, max(l, mid + 1), r);
+			return p1 ^ p2;
+		}
+	}
+};
+
+/*
 LOWEST-COMMON ANCESTOR
 Purpose: To solve the lowest-common ancestor problem
 Time Complexity: [Build]O(Nlg(N)), [Query]O(1)
