@@ -165,7 +165,7 @@ Time Complexity: O(N + M)
 Space Complexity: O(N + M)
 */
 
-template<bool DIR> struct eulerian_path{
+template<bool D> struct eulerian_path{
 	vector<bool> vis;
 	vector<pair<int, int>> ans;
 	vector<pair<pair<int, int>, int>> ret;
@@ -175,7 +175,7 @@ template<bool DIR> struct eulerian_path{
 		int m = (int)vis.size();
 		vis.push_back(false);
 		adj[a].push_back({b, m});
-		if(!DIR) adj[b].push_back({a, m});
+		if(!D) adj[b].push_back({a, m});
 	}
 	void createSize(int n){
 		adj.assign(n + 1, vector<pair<int, int>>());
@@ -268,17 +268,17 @@ Space Complexity: O(N)
 
 template<class T> struct fenwick_tree{
 	vector<T> pre;
-	void init(int _n, int def) { pre = vector<T>(_n, def) }
+	void init(int _n, int def) { pre = vector<T>(_n + 1, def) }
 	void init(vector<T> &arr){
 		pre = vector<int>((int)arr.size());
-		for(int i = 0; i < (int)arr.size(); i++) update(i, arr[i]);
+		for(int i = 1; i < (int)arr.size(); i++) update(i, arr[i]);
 	}
 	void update(int pos, T dif){
-		for(; pos < (int)pre.size(); pos |= pos + 1) pre[pos] += dif;
+		for(; pos < (int)pre.size(); pos += (pos & -pos)) pre[pos] += dif;
 	}
 	long long query(int pos){
 		T sum = 0;
-		for(; pos >= 0; pos = (pos & (pos + 1)) - 1) sum += pre[pos];
+		for(; pos > 0; pos -= (pos & -pos)) sum += pre[pos];
 		return sum;
 	}
 };
@@ -349,7 +349,7 @@ struct gaussian_elimination{
 HEAVY-LIGHT DECOMPOSITION
 Purpose: To divide a tree into multiple paths whose lengths do not exceed lg(N)
 Time Complexity: O(N + M)
-Space Complextiy: O(N)
+Space Complexity: O(N)
 */
 
 struct heavy_light_decomposition{
@@ -607,7 +607,7 @@ vector<tuple<int, int, long long>> prim(vector<vector<pair<int, long long>>> &ad
 
 /*
 RANDOM NUMBER GENERATOR
-Purpose: To generate random numbers in a range
+Purpose: To generate random numbers in a range [a, b]
 Time Complexity: O(N)
 Space Complexity: O(1)
 */
@@ -642,43 +642,43 @@ Space Complexity: O(N)
 */
 
 template<class T> struct segment_tree{
-	vector<T> tr;
+	vector<T> arr;
 	int n;
 	void init(int _n){
-		n = _n, tr = vector<T>(_n * 3);
+		n = _n, arr = vector<T>(_n * 4);
 	}
-	void init(vector<T> &arr){
-		n = (int)arr.size(), tr = vector<T>((int)arr.size() * 3);
-		build(arr, 1, 0, (int)arr.size() - 1);
+	void init(vector<T> &a){
+		n = (int)a.size(), arr = vector<T>((int)a.size() * 4);
+		build(arr, 1, 0, (int)a.size() - 1);
 	}
-	void build(vector<T> &arr, int vtx, int l, int r){
-		if(l == r) tr[vtx] = arr[l];
+	void build(vector<T> &a, int vtx, int tl, int tr){
+		if(tl == tr) arr[vtx] = a[tl];
 		else{
-			int mid = l + (r - l) / 2;
-			build(arr, vtx * 2, l, mid);
-			build(arr, vtx * 2 + 1, mid + 1, r);
-			tr[vtx] = tr[vtx * 2] + tr[vtx * 2 + 1];
+			int mid = (tl + tr) / 2;
+			build(a, vtx * 2, tl, mid);
+			build(a, vtx * 2 + 1, mid + 1, tr);
+			arr[vtx] = arr[vtx * 2] ^ arr[vtx * 2 + 1];
 		}
 	}
 	void update(int pos, T nv){ fakeUpdate(1, 0, n - 1, pos, nv); }
-	void fakeUpdate(int vtx, int l, int r, int pos, T nv){
-		if(l == r) tr[vtx] = nv;
+	void fakeUpdate(int vtx, int tl, int tr, int pos, T nv){
+		if(tl == tr) arr[vtx] = nv;
 		else{
-			int mid = l + (r - l) / 2;
-			if(l <= vtx && pos <= mid) fakeUpdate(vtx * 2, l, mid, pos, nv);
-			else fakeUpdate(vtx * 2 + 1, mid + 1, r, pos, nv);
-			tr[vtx] = tr[vtx * 2] + tr[vtx * 2 + 1];
+			int mid = (tl + tr) / 2;
+			if(pos <= mid) fakeUpdate(vtx * 2, tl, mid, pos, nv);
+			else fakeUpdate(vtx * 2 + 1, mid + 1, tr, pos, nv);
+			arr[vtx] = arr[vtx * 2] ^ arr[vtx * 2 + 1];
 		}
 	}
 	T query(int l, int r){ return fakeQuery(1, 0, n - 1, l, r); }
-	T fakeQuery(int vtx, int s, int e, int l, int r){
-		if(r < s || e < l) return 0;
-		else if(l <= s && e <= r) return tr[vtx];
+	T fakeQuery(int vtx, int tl, int tr, int l, int r){
+		if(l > r) return 0;
+		else if(l == tl && r == tr) return arr[vtx];
 		else{
-			int mid = s + (e - s) / 2;
-			int p1 = fakeQuery(vtx * 2, s, mid, l, r);
-			int p2 = fakeQuery(vtx * 2 + 1, mid + 1, e, l, r);
-			return p1 + p2;
+			int mid = (tl + tr) / 2;
+			int p1 = fakeQuery(vtx * 2, tl, mid, l, min(r, mid));
+			int p2 = fakeQuery(vtx * 2 + 1, mid + 1, tr, max(l, mid + 1), r);
+			return p1 ^ p2;
 		}
 	}
 };
@@ -718,8 +718,8 @@ template<class T> struct sparse_table{
 				jmp[i + 1][j] = min(jmp[i][j], jmp[i][min(n - 1, j + (1 << i))]);
 	}
 	T query(int a, int b){
-		int dep = 31 - __builtin_clz(b - a);
-		return min(jmp[dep][a], jmp[dep][b - (1 << dep)]);
+		int dep = 31 - __builtin_clz(b - a + 1);
+		return min(jmp[dep][a], jmp[dep][b - (1 << dep) + 1]);
 	}
 };
 
@@ -810,7 +810,7 @@ vector<int> topologicalSort(vector<vector<int>> &adj){
 			if(--in[i] == 0) que.push(i);
 		cnt++;
 	}
-	if(cnt != vtx) return {};
+	if(cnt != (int)adj.size()) return {};
 	return ord;
 }
 
