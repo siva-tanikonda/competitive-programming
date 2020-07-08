@@ -184,7 +184,7 @@ template<bool D> struct eulerian_path{
 	void init(){
 		for(int i = 1; i < (int)adj.size(); i++) its[i] = adj[i].begin();
 		vector<pair<pair<int, int>, int>> s = {{{1, -1}, -1}};
-		while((int)s.size() > 0){
+		while(!s.empty()){
 			int x = s.back().first.first;
 			auto &it = its[x], en = adj[x].end();
 			while(it != en && vis[it -> second]) it++;
@@ -268,17 +268,17 @@ Space Complexity: O(N)
 
 template<class T> struct fenwick_tree{
 	vector<T> pre;
-	void init(int _n, int def) { pre = vector<T>(_n + 1, def) }
+	void init(int _n, int def) { pre = vector<T>(_n + 1, def); }
 	void init(vector<T> &arr){
 		pre = vector<int>((int)arr.size());
 		for(int i = 1; i < (int)arr.size(); i++) update(i, arr[i]);
 	}
-	void update(int pos, T dif){
-		for(; pos < (int)pre.size(); pos += (pos & -pos)) pre[pos] += dif;
+	void update(int i, T dif){
+		for(; i < (int)pre.size(); i = i | (i + 1)) pre[i] += dif;
 	}
-	long long query(int pos){
+	long long query(int i){
 		T sum = 0;
-		for(; pos > 0; pos -= (pos & -pos)) sum += pre[pos];
+		for(; i >= 0; i = (i & (i + 1)) - 1) sum += pre[i];
 		return sum;
 	}
 };
@@ -485,28 +485,28 @@ template<class T> struct lazy_segment_tree{
 			arr[vtx] = arr[vtx * 2] ^ arr[vtx * 2 + 1];
 		}
 	}
-	void update(int l, int r, T add){ fakeUpdate(1, 0, n - 1, l, r, add); }
-	void fakeUpdate(int vtx, int tl, int tr, int l, int r, T add){
+	void update(int l, int r, T add){ update(1, 0, n - 1, l, r, add); }
+	void update(int vtx, int tl, int tr, int l, int r, T add){
 		if(l > r) return;
 		else if(tl == l && tr == r)
 			arr[vtx] += add, lazy[vtx] += add;
 		else{
 			push(vtx);
 			int mid = (tl + tr) / 2;
-			fakeUpdate(vtx * 2, tl, mid, l, min(r, mid), add);
-			fakeUpdate(vtx * 2 + 1, mid + 1, tr, max(l, mid + 1), r, add);
+			update(vtx * 2, tl, mid, l, min(r, mid), add);
+			update(vtx * 2 + 1, mid + 1, tr, max(l, mid + 1), r, add);
 			arr[vtx] = arr[vtx * 2] ^ arr[vtx * 2 + 1];
 		}
 	}
-	T query(int l, int r){ return fakeQuery(1, 0, n - 1, l, r); }
-	T fakeQuery(int vtx, int tl, int tr, int l, int r){
+	T query(int l, int r){ return query(1, 0, n - 1, l, r); }
+	T query(int vtx, int tl, int tr, int l, int r){
 		if(l > r) return 0;
 		else if(l <= tl && r <= tr) return arr[vtx];
 		else{
 			push(vtx);
 			int mid = (tl + tr) / 2;
-			int p1 = fakeQuery(vtx * 2, tl, mid, l, min(r, mid));
-			int p2 = fakeQuery(vtx * 2 + 1, mid + 1, tr, max(l, mid + 1), r);
+			int p1 = query(vtx * 2, tl, mid, l, min(r, mid));
+			int p2 = query(vtx * 2 + 1, mid + 1, tr, max(l, mid + 1), r);
 			return p1 ^ p2;
 		}
 	}
@@ -723,24 +723,24 @@ template<class T> struct segment_tree{
 			arr[vtx] = arr[vtx * 2] ^ arr[vtx * 2 + 1];
 		}
 	}
-	void update(int pos, T nv){ fakeUpdate(1, 0, n - 1, pos, nv); }
-	void fakeUpdate(int vtx, int tl, int tr, int pos, T nv){
+	void update(int pos, T nv){ update(1, 0, n - 1, pos, nv); }
+	void update(int vtx, int tl, int tr, int pos, T nv){
 		if(tl == tr) arr[vtx] = nv;
 		else{
 			int mid = (tl + tr) / 2;
-			if(pos <= mid) fakeUpdate(vtx * 2, tl, mid, pos, nv);
-			else fakeUpdate(vtx * 2 + 1, mid + 1, tr, pos, nv);
+			if(pos <= mid) update(vtx * 2, tl, mid, pos, nv);
+			else update(vtx * 2 + 1, mid + 1, tr, pos, nv);
 			arr[vtx] = arr[vtx * 2] ^ arr[vtx * 2 + 1];
 		}
 	}
-	T query(int l, int r){ return fakeQuery(1, 0, n - 1, l, r); }
-	T fakeQuery(int vtx, int tl, int tr, int l, int r){
+	T query(int l, int r){ return query(1, 0, n - 1, l, r); }
+	T query(int vtx, int tl, int tr, int l, int r){
 		if(l > r) return 0;
 		else if(l == tl && r == tr) return arr[vtx];
 		else{
 			int mid = (tl + tr) / 2;
-			int p1 = fakeQuery(vtx * 2, tl, mid, l, min(r, mid));
-			int p2 = fakeQuery(vtx * 2 + 1, mid + 1, tr, max(l, mid + 1), r);
+			int p1 = query(vtx * 2, tl, mid, l, min(r, mid));
+			int p2 = query(vtx * 2 + 1, mid + 1, tr, max(l, mid + 1), r);
 			return p1 ^ p2;
 		}
 	}

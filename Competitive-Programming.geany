@@ -29,7 +29,9 @@ long_line_column=72
 
 [files]
 current_page=0
-FILE_NAME_0=456;C++;0;EUTF-8;1;1;0;%2Fhome%2Fsiva%2FDesktop%2FCompetitive-Programming%2FResources%2Fprewritten_algorithms.cpp;0;4
+FILE_NAME_0=369;C++;0;EUTF-8;1;1;0;%2Fhome%2Fsiva%2FDesktop%2FCompetitive-Programming%2FEnvironment%2FA.cpp;0;4
+FILE_NAME_1=0;None;0;EUTF-8;1;1;0;%2Fhome%2Fsiva%2FDesktop%2FCompetitive-Programming%2FEnvironment%2Finput.txt;0;4
+FILE_NAME_2=4042;C++;0;EUTF-8;1;1;0;%2Fhome%2Fsiva%2FDesktop%2FCompetitive-Programming%2FResources%2Fprewritten_algorithms.cpp;0;4
 
 [VTE]
 last_dir=/home/siva/Desktop/Competitive-Programming
