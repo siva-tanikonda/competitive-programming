@@ -1,0 +1,13 @@
+<snippet>
+    <content>
+<![CDATA[ll binpow(ll a, ll b, ll mod){
+    if(!b) return 1 % mod;
+    ll res = binpow(a, b / 2);
+    res = (res * res) % mod;
+    if(b % 2) res = (res * a) % mod;
+    return res;
+}]]>   
+    </content>
+    <tabTrigger>cp_binary_exponentiation</tabTrigger>
+    <description>Binary Exponentiation</description>
+</snippet>
