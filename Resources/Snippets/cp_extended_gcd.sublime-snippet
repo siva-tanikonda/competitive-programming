@@ -1,0 +1,14 @@
+<snippet>
+	<content>
+<![CDATA[tuple<long long, long long, long long> extendedGcd(long long a, long long b){
+	if(b == 0) return make_tuple(1, 0, a);
+	else{
+		long long x, y, z;
+		tie(x, y, z) = extendedGcd(b, a % b);
+		return make_tuple(y, x - (a / b) * y, z);
+	}
+}]]>	
+	</content>
+	<tabTrigger>cp_extended_gcd</tabTrigger>
+	<description>Extended GCD</description>
+</snippet>

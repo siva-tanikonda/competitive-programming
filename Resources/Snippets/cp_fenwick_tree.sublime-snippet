@@ -1,0 +1,20 @@
+<snippet>
+	<content>
+<![CDATA[template<class T> struct fenwick_tree{
+	vector<T> arr;
+	void init(int n) { arr.resize(n); }
+	void update(int pos, T add){
+		for(; pos < (int)arr.size(); pos |= pos + 1)
+			arr[pos] += add;
+	}
+	T query(int pos){
+		T sum = 0;
+		for(; pos >= 0; pos = (pos & (pos + 1)) - 1)
+			sum += arr[pos];
+		return sum;
+	}
+};]]>	
+	</content>
+	<tabTrigger>cp_fenwick_tree</tabTrigger>
+	<description>Fenwick Tree</description>
+</snippet>
