@@ -11,9 +11,6 @@ LANG: C++
 
 using namespace std;
 using namespace __gnu_pbds;
-typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> indexed_set;
-mt19937 rng((uint32_t)chrono::steady_clock::now().time_since_epoch().count());
-const double pi = 3.14159265358979;
 
 int n, m;
 bool bs[125001];
