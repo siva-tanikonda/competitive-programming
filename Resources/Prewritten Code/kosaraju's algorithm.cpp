@@ -1,6 +1,11 @@
-<snippet>
-    <content>
-<![CDATA[struct kosaraju{
+/*
+KOSARAJU'S ALGORITHM
+Purpose: This algorithm finds the strongly-connected components of a graph
+Time Complexity: O(n + m)
+Space Complexity: O(n + m)
+*/
+
+struct kosaraju{
     vector<vector<int>> adj[2];
     vector<bool> vis;
     int n;
@@ -34,8 +39,4 @@
             }
         return ans;
     }
-};]]>   
-    </content>
-    <tabTrigger>cp_kosaraju</tabTrigger>
-    <description>Kosaraju's Algorithm</description>
-</snippet>
+};

@@ -1,6 +1,11 @@
-<snippet>
-    <content>
-<![CDATA[struct sieve_of_eratosthenes{
+/*
+SIEVE OF ERATOSTHENES
+Purpose: This finds all the primes under a certain number
+Time Complexity: O(nlg(lg(n)))
+Space Complexity: O(n)
+*/
+
+struct sieve_of_eratosthenes{
     vector<bool> arr;
     void init(int n){
         arr.resize(n + 1, true);
@@ -10,8 +15,4 @@
                 for(int j = i * i; j <= n; j += i) arr[j] = false;
     }
     bool query(int x){ return arr[x]; }
-};]]>   
-    </content>
-    <tabTrigger>cp_sieve_of_eratosthenes</tabTrigger>
-    <description>Sieve of Eratosthenes</description>
-</snippet>
+};

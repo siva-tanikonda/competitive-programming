@@ -1,6 +1,11 @@
-<snippet>
-    <content>
-<![CDATA[struct lowest_common_ancestor{
+/*
+LOWEST-COMMON ANCESTOR
+Purpose: This finds the lowest-common ancestor of two nodes in a tree
+Time Complexity: [Build]O(nlg(n)) [Query]O(1)
+Space Complexity: O(nlg(n))
+*/
+
+struct lowest_common_ancestor{
     sparse_table<pair<int, int>> rmq;
     vector<int> hgt, fir;
     vector<pair<int, int>> eul;
@@ -25,8 +30,4 @@
         if(a > b) swap(a, b);
         return rmq.query(a, b).second;
     }
-};]]>    
-    </content>
-    <tabTrigger>cp_lowest_common_ancestor</tabTrigger>
-    <description>Lowest-Common Ancestor</description>
-</snippet>
+};

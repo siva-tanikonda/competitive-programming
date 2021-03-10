@@ -1,6 +1,9 @@
-<snippet>
-    <content>
-<![CDATA[struct modular_arithmetic{
+/*
+MODULAR ARITHMETIC CLASS
+Purpose: This is just a class that supports modular arithmetic operations
+*/
+
+struct modular_arithmetic{
     const int mod = 1e9 + 7;
     const bool prime = true;
     tuple<int, int, int> gcd(int a, int b){
@@ -36,8 +39,4 @@
             }
         }
     }
-};]]>   
-    </content>
-    <tabTrigger>cp_modular_arithmetic</tabTrigger>
-    <description>Modular Arithmetic Class</description>
-</snippet>
+};

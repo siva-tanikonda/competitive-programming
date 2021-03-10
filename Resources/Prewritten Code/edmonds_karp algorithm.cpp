@@ -1,6 +1,11 @@
-<snippet>
-    <content>
-<![CDATA[template<class T> struct edmonds_karp{
+/*
+EDMONDS KARP ALGORITHM
+Purpose: It finds the maximum flow in a flow graph
+Time Complexity: O(nm^2)
+Space Complexity: O(n^2)
+*/
+
+template<class T> struct edmonds_karp{
     vector<vector<T>> cap, adj;
     vector<int> par;
     void init(int n){
@@ -45,8 +50,4 @@
         }
         return res;
     }
-};]]>    
-    </content>
-    <tabTrigger>cp_edmonds_karp</tabTrigger>
-    <description>Edmonds-Karp Algorithm</description>
-</snippet>
+};
