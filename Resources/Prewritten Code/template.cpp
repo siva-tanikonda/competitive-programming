@@ -15,8 +15,7 @@ using ll = long long;
 int main(){
     //IO("input.txt", "output.txt");
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    srand(time(NULL));
+    cin.tie(NULL), srand(time(NULL));
     
     return 0;
 }
