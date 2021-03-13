@@ -1,6 +1,6 @@
 /*
 POINT CLASS
-Purpose: This is just a class with basic geometric functions
+Purpose: This is just a class with basic geometric point functions
 */
 
 template<class T> struct point{
