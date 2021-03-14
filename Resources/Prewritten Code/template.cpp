@@ -3,6 +3,8 @@ TEMPLATE
 Purpose: This is just my default template for competitive programming
 */
 
+#pragma GCC optimize("unroll-loops, O3")
+#pragma GCC target("avx")
 #include <bits/stdc++.h>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
