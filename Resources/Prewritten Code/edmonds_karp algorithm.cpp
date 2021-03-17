@@ -36,7 +36,7 @@ template<class T> struct edmonds_karp{
         }
         return 0;
     }
-    T getFlow(int src, int snk){
+    T solve(int src, int snk){
         T flw, res = 0;
         while((bool)(flw = bfs(src, snk))){
             res += flw;
