@@ -9,10 +9,10 @@ Purpose: This is just my default template for competitive programming
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
 #define IO(i, o) freopen(i, "r", stdin), freopen(o, "w", stdout)
-using namespace __gnu_pbds;
 using namespace std;
-using ld = long double;
+using namespace __gnu_pbds;
 using ll = long long;
+using ld = long double;
 
 int main(){
     //IO("input.txt", "output.txt");
