@@ -1,15 +1,15 @@
 #STRESS-TESTER TEMPLATE
 #Purpose: This is just a Bash template for a stress tester
 
-g++ -std=c++11 -Wshadow -Wall -O2 -Wno-unused-result -o a.out Ag.cpp
-g++ -std=c++11 -Wshadow -Wall -O2 -Wno-unused-result -o b.out A1.cpp
-#g++ -std=c++11 -Wshadow -Wall -O2 -Wno-unused-result -o c.out A2.cpp
+g++ -std=c++17 -Wall -fsanitize=address -fsanitize=undefined -Wno-pragmas -Wno-attributes -D_GLIBCXX_DEBUG -o a.out A.cpp
+g++ -std=c++17 -Wall -fsanitize=address -fsanitize=undefined -Wno-pragmas -Wno-attributes -D_GLIBCXX_DEBUG -o b.out B.cpp
+#g++ -std=c++17 -Wall -fsanitize=address -fsanitize=undefined -Wno-pragmas -Wno-attributes -D_GLIBCXX_DEBUG -o c.out C.cpp
 echo START
 for((i = 1; i <= 100; i++)); do
-    echo test $i
+    echo test $i 
     ./a.out > input.txt
-    ./b.out < input.txt > output1.txt
-    #./c.out < input.txt > output2.txt
-    #diff -w output1.txt output2.txt || break
+    ./b.out < input.txt > B.txt
+    #./c.out < input.txt > C.txt
+    #diff -w B.txt C.txt || break
 done
 echo DONE
