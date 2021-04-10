@@ -67,7 +67,7 @@ struct lazy_segment_tree{
 };
 
 int n, b[200001], l[200001], pre[200001];
-vector<int> sub[200001], add[200001];
+vector<int> sub[200001];
 lazy_segment_tree seg;
 
 int main(){
@@ -78,7 +78,6 @@ int main(){
     fill(pre, pre + n + 1, 0);
     for(int i = 1; i <= n; i++){
         l[i] = pre[b[i]] + 1;
-        add[i].push_back(l[i]);
         pre[b[i]] = i;
     }
     fill(pre, pre + n + 1, n + 1);
@@ -90,7 +89,7 @@ int main(){
     ll ans = 0;
     for(int i = 1; i <= n; i++){
         ans += seg.query(l[i], i);
-        for(int j : add[i]) seg.update(j, i - 1, 1);
+        seg.update(l[i], i - 1, 1);
         for(int j : sub[i]){
             seg.invalid(j);
             seg.update(l[j], j - 1, -1);
