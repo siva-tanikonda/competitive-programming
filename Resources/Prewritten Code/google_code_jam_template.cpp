@@ -16,7 +16,7 @@ using ld = long double;
 const int xx[8] = {-1, 0, 1, 0, -1, -1, 1, 1};
 const int yy[8] = {0, -1, 0, 1, -1, 1, -1, 1};
 const int mod = 1e9 + 7;
-const int amod = 99824353;
+const int amod = 998244353;
 
 void solve(){
 
