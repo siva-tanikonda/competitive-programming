@@ -4,7 +4,7 @@ Purpose: This is just a class that supports modular arithmetic operations
 */
 
 struct modular_arithmetic{
-    const int mod = 1e9 + 7;
+    const int mod = 1e9 + 7;//const int mod = 998244353;
     const bool prime = true;
     tuple<int, int, int> gcd(int a, int b){
         if(b == 0) return make_tuple(1, 0, a);
