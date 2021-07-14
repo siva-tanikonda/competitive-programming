@@ -9,7 +9,7 @@ template<class T> struct sparse_table{
     vector<vector<T>> jmp;
     void init(vector<T> &arr){
         int n = (int)arr.size(), dpt = 32 - __builtin_clz(n);
-        jmp.resize(dpt, arr);
+        jmp = vector<vector<T>>(dpt, arr);
         for(int i = 0; i < dpt - 1; i++)
             for(int j = 0; j < n; j++)
                 jmp[i + 1][j] = min(jmp[i][j], jmp[i][min(j + (1 << i), n - 1)]);
