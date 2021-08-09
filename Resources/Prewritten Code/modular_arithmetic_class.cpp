@@ -25,6 +25,9 @@ struct modular_arithmetic{
         if(!prime) return -1;
         return pow(a, b % (mod - 1));
     }
+    int inv(ll num){
+        return pow(num, mod - 2);
+    }
     int add(ll a, ll b){ return (a + b) % mod; }
     int sub(ll a, ll b) { return ((a - b) % mod + mod) % mod; }
     int mult(ll a, ll b) { return (a * b) % mod; }
