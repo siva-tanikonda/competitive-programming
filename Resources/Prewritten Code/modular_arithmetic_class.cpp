@@ -26,20 +26,23 @@ struct modular_arithmetic{
         return pow(a, b % (mod - 1));
     }
     int inv(ll num){
-        return pow(num, mod - 2);
+        if(prime) return pow(num, mod - 2);
+        else{
+            tuple<ll, ll, ll> res = gcd(num, mod);
+            if(get<2>(res) != 1) return -1;
+            else{
+                ll inv = (get<0>(res) % mod + mod) % mod;
+                return inv % mod;
+            }
+        }
     }
     int add(ll a, ll b){ return (a + b) % mod; }
     int sub(ll a, ll b) { return ((a - b) % mod + mod) % mod; }
     int mult(ll a, ll b) { return (a * b) % mod; }
     int div(ll a, ll b) {
-        if(prime) return (a * pow(b, mod - 2)) % mod;
-        else{
-            tuple<ll, ll, ll> res = gcd(b, mod);
-            if(get<2>(res) != 1) return -1;
-            else{
-                ll inv = (get<0>(res) % mod + mod) % mod;
-                return (a * inv) % mod;
-            }
-        }
+        int res = inv(b);
+        if(res == -1) return -1;
+        return (a * res) % mod;
     }
 };
+modular_arithmetic mod;
