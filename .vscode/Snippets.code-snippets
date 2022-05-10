@@ -59,7 +59,7 @@
 			"\tcin >> t;",
 			"\tfor(int i = 1; i <= t; i++){",
 			"\t\tcout << \"Case #\" << i << \": \";",
-        	"\t\tsolve();",
+			"\t\tsolve();",
 			"\t}",
 			"\treturn 0;",
 			"}"
