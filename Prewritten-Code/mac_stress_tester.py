@@ -1,5 +1,5 @@
-#STRESS TESTER
-#Purpose: This is just Python code that allows for stress-testing solutions on Windows for correctness, and this requires having a correct solution that is too slow for the problem, and a testcase generator, along with the actual code you are testing
+#MAC STRESS TESTER
+#Purpose: This is just Python code that allows for stress-testing solutions on MacOS for correctness, and this requires having a correct solution that is too slow for the problem, and a testcase generator, along with the actual code you are testing
 
 import os
 import filecmp
@@ -37,14 +37,14 @@ n = 100
 
 for i in range(1, n + 1):
     print("Test " + str(i) + ":", end = " ")
-    os.system(fileBase + "_generator > " + directoryBase + "\\input.txt")
-    os.system(fileBase + " < " + directoryBase + "\\input.txt > " + fileBase + "_output.txt")
-    os.system(fileBase + "_slow < " + directoryBase + "\\input.txt > " + fileBase + "_slow_output.txt")
+    os.system(fileBase + "_generator > " + directoryBase + "/input.txt")
+    os.system(fileBase + " < " + directoryBase + "/input.txt > " + fileBase + "_output.txt")
+    os.system(fileBase + "_slow < " + directoryBase + "/input.txt > " + fileBase + "_slow_output.txt")
     res = filecmp.cmp(fileBase + "_output.txt", fileBase + "_slow_output.txt")
     if (not res):
         print(color.RED + "FAILED" + color.END)
         print(color.BOLD + "input.txt:", color.END)
-        printFileContents(directoryBase + "\\input.txt")
+        printFileContents(directoryBase + "/input.txt")
         print(color.BOLD + fileName + "_output.txt:", color.END)
         printFileContents(fileBase + "_output.txt")
         print(color.BOLD + fileName + "_slow_output.txt:", color.END)
