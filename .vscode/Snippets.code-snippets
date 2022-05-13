@@ -2,8 +2,6 @@
 	"Template": {
 		"prefix": ["cp_template"],
 		"body": [
-			"#pragma GCC optimize(\"unroll-loops, O3\")",
-			"#pragma GCC target(\"avx\")",
 			"#include <bits/stdc++.h>",
 			"#include <ext/pb_ds/tree_policy.hpp>",
 			"#include <ext/pb_ds/assoc_container.hpp>",
@@ -27,8 +25,6 @@
 	"Google Code Jam Template": {
 		"prefix": ["cp_google_code_jam_template"],
 		"body": [
-			"#pragma GCC optimize(\"unroll-loops, O3\")",
-			"#pragma GCC target(\"avx\")",
 			"#include <bits/stdc++.h>",
 			"#include <ext/pb_ds/tree_policy.hpp>",
 			"#include <ext/pb_ds/assoc_container.hpp>",
