@@ -12,7 +12,7 @@ struct topological_sort {
         adj = vector<vector<int>>(n + 1, vector<int>());
         for (int i = 1; i <= n; i++) adj[i] = inp[i];
     }
-    void init(vector<vector<int>> inp) { adj = inp; }
+    void init(vector<vector<int>> &inp) { adj = inp; }
     vector<int> getSort() {
         queue<int> que;
         vector<int> ord;
