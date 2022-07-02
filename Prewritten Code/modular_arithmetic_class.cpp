@@ -1,48 +1,31 @@
 /*
 MODULAR ARITHMETIC CLASS
-Purpose: This is just a class that supports modular arithmetic operations
+Purpose: This is just a class that supports modular arithmetic operations (only with a prime modulus)
 */
 
-struct modular_arithmetic{
-    const int mod = 1e9 + 7;//const int mod = 998244353;
-    const bool prime = true;
-    tuple<ll, ll, ll> gcd(ll a, ll b){
-        if(b == 0) return make_tuple(1, 0, a);
-        else{
-            ll x, y, z;
-            tie(x, y, z) = gcd(b, a % b);
-            return make_tuple(y, x - (a / b) * y, z);
-        }
+struct modular_arithmetic {
+    const int mod = 1e9 + 7;
+    int add(ll x, ll y) {
+        return ((x % mod + mod) % mod + (y % mod + mod) % mod) % mod;
     }
-    int pow(ll a, ll b){
-        if(!b) return 1 % mod;
-        ll ret = pow(a, b / 2);
-        ret = (ret * ret) % mod;
-        if(b % 2) ret = (ret * a) % mod;
-        return ret;
+    int sub(ll x, ll y) {
+        return ((x % mod + mod) % mod - (y % mod + mod) % mod) % mod;
     }
-    int powpow(ll a, ll b){
-        if(!prime) return -1;
-        return pow(a, b % (mod - 1));
+    int mult(ll x, ll y) {
+        return (((x % mod + mod) % mod) * ((y % mod + mod) % mod)) % mod;
     }
-    int inv(ll num){
-        if(prime) return pow(num, mod - 2);
-        else{
-            tuple<ll, ll, ll> res = gcd(num, mod);
-            if(get<2>(res) != 1) return -1;
-            else{
-                ll inv = (get<0>(res) % mod + mod) % mod;
-                return inv % mod;
-            }
-        }
+    int pwr(ll x, ll y) {
+        if (!y) return 1 % mod;
+        ll ans = pwr(x, y / 2);
+        ans = (ans * ans) % mod;
+        if (y % 2) ans = (ans * (x % mod)) % mod;
+        return ans;
     }
-    int add(ll a, ll b){ return (a + b) % mod; }
-    int sub(ll a, ll b) { return ((a - b) % mod + mod) % mod; }
-    int mult(ll a, ll b) { return (a * b) % mod; }
-    int div(ll a, ll b) {
-        int res = inv(b);
-        if(res == -1) return -1;
-        return (a * res) % mod;
+    int inv(ll x) {
+        return pwr(x, mod - 2);
+    }
+    int div(ll x, ll y) {
+        return ((x % mod) * inv(y)) % mod;
     }
 };
 modular_arithmetic mod;

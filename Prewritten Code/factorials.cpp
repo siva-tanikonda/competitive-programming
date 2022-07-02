@@ -5,23 +5,23 @@ Time Complexity: [Build]O(nlg(n)) [Query]O(1)
 Space Complexity: O(n)
 */
 
-struct factorials{
+struct factorials {
     vector<int> fac, inv;
-    void init(int n){
-        fac = inv = vector<int>(n + 1);
+    void init(int n) {
+        fac = vector<int>(n + 1);
+        inv = vector<int>(n + 1);
         fac[0] = inv[0] = 1;
-        for(int i = 1; i <= n; i++){
+        for (int i = 1; i <= n; i++) {
             fac[i] = mod.mult(fac[i - 1], i);
             inv[i] = mod.inv(fac[i]);
         }
     }
-    int prm(int a, int b){
-        if(a < b) return 0;
-        else return mod.mult(fac[a], inv[a - b]);
+    int prm(int x, int y) {
+        if (y > x) return 0;
+        return mod.mult(fac[x], inv[x - y]);
     }
-    int cmb(int a, int b){
-        if(a < b) return 0;
-        else return mod.mult(prm(a, b), inv[b]);
+    int cmb(int x, int y) {
+        if (y > x) return 0;
+        return mod.mult(prm(x, y), inv[y]);
     }
 };
-factorials fact;
