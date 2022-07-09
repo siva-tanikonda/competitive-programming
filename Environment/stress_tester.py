@@ -20,18 +20,18 @@ fileBase = sys.argv[1]
 fileName = sys.argv[2]
 directoryBase = sys.argv[3]
 
-print("Starting Tests...")
+print("Beginning process...")
 
 #These are just the build commands
 os.system("g++ -std=c++17 -fdiagnostics-color=always -Wall -Wno-pragmas -Wno-attributes -o " + fileBase + "_generator_compiled -g " + fileBase + "_generator.cpp")
 os.system("g++ -std=c++17 -fdiagnostics-color=always -Wall -Wno-pragmas -Wno-attributes -o " + fileBase + "_compiled -g " + fileBase + ".cpp")
 os.system("g++ -std=c++17 -fdiagnostics-color=always -Wall -Wno-pragmas -Wno-attributes -o " + fileBase + "_slow_compiled -g " + fileBase + "_slow.cpp")
-
-print("Building Complete...")
+print("Building complete...")
 
 #Change this if you want to run more or fewer tests
 n = 100
 
+print("Beginning tests...")
 for i in range(1, n + 1):
     print("Test " + str(i) + ":", end = " ")
     os.system(fileBase + "_generator_compiled > \"" + directoryBase + "\\input.txt\"")
@@ -49,3 +49,4 @@ for i in range(1, n + 1):
         break
     else:
         print(color.GREEN + "SUCCESS" + color.END)
+print("Done")
