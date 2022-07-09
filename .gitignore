@@ -1,4 +1,5 @@
 Environment
+!Environment/stress_tester.py
 .vscode
-!.vscode/Snippets.code-snippets
+!.vscode/snippets.code-snippets
 .DS_Store
