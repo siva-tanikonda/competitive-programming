@@ -24,9 +24,9 @@ directoryBase = sys.argv[3]
 print("Beginning process...")
 
 #These are just the build commands
-os.system("g++ -std=c++17 -fdiagnostics-color=always -Wall -Wno-pragmas -Wno-attributes -o " + "build\\" + fileBase + "_generator_compiled -g " + fileBase + "_generator.cpp")
-os.system("g++ -std=c++17 -fdiagnostics-color=always -Wall -Wno-pragmas -Wno-attributes -o " + "build\\" + fileBase + "_compiled -g " + fileBase + ".cpp")
-os.system("g++ -std=c++17 -fdiagnostics-color=always -Wall -Wno-pragmas -Wno-attributes -o " + "build\\" + fileBase + "_slow_compiled -g " + fileBase + "_slow.cpp")
+os.system("g++ -std=c++17 -fdiagnostics-color=always -Wall -Wno-pragmas -Wno-attributes -o " + "Build\\" + fileBase + "_generator_compiled -g " + fileBase + "_generator.cpp")
+os.system("g++ -std=c++17 -fdiagnostics-color=always -Wall -Wno-pragmas -Wno-attributes -o " + "Build\\" + fileBase + "_compiled -g " + fileBase + ".cpp")
+os.system("g++ -std=c++17 -fdiagnostics-color=always -Wall -Wno-pragmas -Wno-attributes -o " + "Build\\" + fileBase + "_slow_compiled -g " + fileBase + "_slow.cpp")
 print("Building complete...")
 
 #Change this if you want to run more or fewer tests
@@ -35,9 +35,9 @@ n = 100
 print("Beginning tests...")
 for i in range(1, n + 1):
     print("Test " + str(i) + ":", end = " ")
-    os.system("build\\" + fileBase + "_generator_compiled > \"" + directoryBase + "\\input.txt\"")
-    os.system("build\\" + fileBase + "_compiled < \"" + directoryBase + "\\input.txt\" > " + fileBase + "_output.txt")
-    os.system("build\\" + fileBase + "_slow_compiled < \"" + directoryBase + "\\input.txt\" > " + fileBase + "_slow_output.txt")
+    os.system("Build\\" + fileBase + "_generator_compiled > \"" + directoryBase + "\\input.txt\"")
+    os.system("Build\\" + fileBase + "_compiled < \"" + directoryBase + "\\input.txt\" > " + fileBase + "_output.txt")
+    os.system("Build\\" + fileBase + "_slow_compiled < \"" + directoryBase + "\\input.txt\" > " + fileBase + "_slow_output.txt")
     res = filecmp.cmp(fileBase + "_output.txt", fileBase + "_slow_output.txt")
     if (not res):
         print(color.RED + "FAILED" + color.END)
