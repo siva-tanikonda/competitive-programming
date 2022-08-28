@@ -1,4 +1,5 @@
 Environment
+!Environment/windows_stress_tester.py
 
 .vscode/*
 !.vscode/snippets.code-snippets
