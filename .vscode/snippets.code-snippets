@@ -54,6 +54,32 @@
         ],
         "description": ""
     },
+    "Constructive Tester Template": {
+        "prefix": "cp_constructive_tester_template",
+        "body": [
+            "#pragma GCC optimize(\"unroll-loops, O3\")\r",
+            "#include <bits/stdc++.h>\r",
+            "#include <ext/pb_ds/tree_policy.hpp>\r",
+            "#include <ext/pb_ds/assoc_container.hpp>\r",
+            "using namespace std;\r",
+            "using namespace __gnu_pbds;\r",
+            "using ll = long long;\r",
+            "using ld = long double;\r",
+            "const int xx[8] = { -1, 0, 1, 0, -1, -1, 1, 1 };\r",
+            "const int yy[8] = { 0, -1, 0, 1, -1, 1, -1, 1 };\r",
+            "\r",
+            "int main() {\r",
+            "    ios_base::sync_with_stdio(false);\r",
+            "    cin.tie(NULL), srand(time(NULL));\r",
+            "    freopen(\"input.txt\", \"r\", stdin);\r",
+            "    \r",
+            "    freopen(\"code_output.txt\", \"r\", stdin);\r",
+            "    \r",
+            "    return 0;\r",
+            "}"
+        ],
+        "description": ""
+    },
     "Modular Arithmetic Class": {
         "prefix": "cp_modular_arithmetic",
         "body": [
