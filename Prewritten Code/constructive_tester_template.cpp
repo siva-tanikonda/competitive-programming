@@ -17,9 +17,8 @@ const int yy[8] = { 0, -1, 0, 1, -1, 1, -1, 1 };
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL), srand(time(NULL));
-    freopen("input.txt", "r", stdin);
+    ifstream in("input.txt");
+    ifstream out("code_output.txt");
     
-    freopen("code_output.txt", "r", stdin);
-
     return 0;
 }

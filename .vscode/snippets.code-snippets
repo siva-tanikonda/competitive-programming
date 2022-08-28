@@ -71,9 +71,8 @@
             "int main() {\r",
             "    ios_base::sync_with_stdio(false);\r",
             "    cin.tie(NULL), srand(time(NULL));\r",
-            "    freopen(\"input.txt\", \"r\", stdin);\r",
-            "    \r",
-            "    freopen(\"code_output.txt\", \"r\", stdin);\r",
+            "    ifstream in(\"input.txt\");\r",
+            "    ifstream out(\"code_output.txt\");\r",
             "    \r",
             "    return 0;\r",
             "}"
