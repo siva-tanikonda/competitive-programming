@@ -131,5 +131,25 @@
             "};"
         ],
         "description": ""
+    },
+    "Fenwick Tree": {
+        "prefix": "cp_fenwick_tree",
+        "body": [
+            "template <class T> struct fenwick_tree {\r",
+            "    vector<T> arr;\r",
+            "    void init(int n) { arr = vector<int>(n + 1, 0); }\r",
+            "    void update(int pos, T add) {\r",
+            "        for (; pos < (int)arr.size(); pos |= pos + 1)\r",
+            "            arr[pos] += add;\r",
+            "    }\r",
+            "    T query(int pos) {\r",
+            "        T sum = 0;\r",
+            "        for (; pos >= 0; pos = (pos & (pos + 1)) - 1)\r",
+            "            sum += arr[pos];\r",
+            "        return sum;\r",
+            "    }\r",
+            "};"
+        ],
+        "description": ""
     }
 }
