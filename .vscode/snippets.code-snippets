@@ -88,7 +88,7 @@
             "        return ((x % mod + mod) % mod + (y % mod + mod) % mod) % mod;\r",
             "    }\r",
             "    int sub(ll x, ll y) {\r",
-            "        return ((x % mod + mod) % mod - (y % mod + mod) % mod) % mod;\r",
+            "        return (((x % mod + mod) % mod - (y % mod + mod) % mod) % mod + mod) % mod;\r",
             "    }\r",
             "    int mult(ll x, ll y) {\r",
             "        return (((x % mod + mod) % mod) * ((y % mod + mod) % mod)) % mod;\r",

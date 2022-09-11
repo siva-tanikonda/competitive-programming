@@ -9,7 +9,7 @@ struct modular_arithmetic {
         return ((x % mod + mod) % mod + (y % mod + mod) % mod) % mod;
     }
     int sub(ll x, ll y) {
-        return ((x % mod + mod) % mod - (y % mod + mod) % mod) % mod;
+        return (((x % mod + mod) % mod - (y % mod + mod) % mod) % mod + mod) % mod;
     }
     int mult(ll x, ll y) {
         return (((x % mod + mod) % mod) * ((y % mod + mod) % mod)) % mod;
