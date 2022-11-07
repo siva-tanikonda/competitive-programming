@@ -1,6 +1,6 @@
 /*
 TEMPLATE
-Purpose: This is just my default template for competitive programming
+Purpose: This is just a default template for competitive programming problems
 */
 
 #pragma GCC optimize("unroll-loops, O3")

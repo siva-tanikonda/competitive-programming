@@ -1,6 +1,6 @@
 /*
 GOOGLE CODE JAM TEMPLATE
-Purpose: This is just my template for the Google Code Jam
+Purpose: This is just a template for Google Code Jam problems
 */
 
 #pragma GCC optimize("unroll-loops, O3")

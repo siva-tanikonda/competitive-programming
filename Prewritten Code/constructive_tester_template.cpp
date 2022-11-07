@@ -1,6 +1,6 @@
 /*
 CONSTRUCTIVE TESTER TEMPLATE
-Purpose: This is just my template to check solutions to constructive problems
+Purpose: This is just a template to check solutions to constructive problems
 */
 
 #pragma GCC optimize("unroll-loops, O3")
@@ -14,12 +14,13 @@ using ld = long double;
 template <class T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 const int xx[8] = { -1, 0, 1, 0, -1, -1, 1, 1 };
 const int yy[8] = { 0, -1, 0, 1, -1, 1, -1, 1 };
+string file_name = "code";
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL), srand(time(NULL));
     ifstream in("input.txt");
-    ifstream out("code_output.txt");
+    ifstream out(file_name + "_output.txt");
     
     return 0;
 }
