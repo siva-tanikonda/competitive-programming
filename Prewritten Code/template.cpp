@@ -11,6 +11,7 @@ using namespace std;
 using namespace __gnu_pbds;
 using ll = long long;
 using ld = long double;
+template <class T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 const int xx[8] = { -1, 0, 1, 0, -1, -1, 1, 1 };
 const int yy[8] = { 0, -1, 0, 1, -1, 1, -1, 1 };
 
