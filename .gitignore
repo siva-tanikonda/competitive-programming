@@ -1,4 +1,4 @@
-Environment
+Environment/*
 !Environment/windows_stress_tester.py
 !Environment/mac_stress_tester.py
 
