@@ -1,6 +1,5 @@
 Environment/*
-!Environment/windows_stress_tester.py
-!Environment/mac_stress_tester.py
+!Environment/stress_tester.py
 
 .vscode/*
 !.vscode/snippets.code-snippets
