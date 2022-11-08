@@ -5,7 +5,7 @@ Purpose: This is just a class that supports modular arithmetic operations (only 
 
 struct modular_arithmetic {
 
-    const int m = 1e9 + 7; //const int mod = 998244353;
+    const int m = 1e9 + 7; //const int m = 998244353;
 
     //Returns (x + y) mod m
     int add(ll x, ll y) {

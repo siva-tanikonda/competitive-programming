@@ -87,7 +87,7 @@
         "prefix": "cp_modular_arithmetic_class",
         "body": [
             "struct modular_arithmetic {\r",
-            "    const int m = 1e9 + 7; //const int mod = 998244353;\r",
+            "    const int m = 1e9 + 7; //const int m = 998244353;\r",
             "    int add(ll x, ll y) {\r",
             "        return ((x % m + m) % m + (y % m + m) % m) % m;\r",
             "    }\r",
