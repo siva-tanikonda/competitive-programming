@@ -23,9 +23,9 @@ struct modular_arithmetic {
     }
 
     //Returns x^y mod m (binary exponentiation)
-    int pwr(ll x, ll y) {
+    int pow(ll x, ll y) {
         if (!y) return 1 % m;
-        ll ans = pwr(x, y / 2);
+        ll ans = pow(x, y / 2);
         ans = (ans * ans) % m;
         if (y % 2) ans = (ans * (x % m)) % m;
         return ans;
@@ -33,7 +33,7 @@ struct modular_arithmetic {
 
     //Returns modular inverse of x mod m (using Fermat's Little Theorem)
     int inv(ll x) {
-        return pwr(x, m - 2);
+        return pow(x, m - 2);
     }
 
     //Returns (xy^(-1)) mod m (using the modular inverse)
