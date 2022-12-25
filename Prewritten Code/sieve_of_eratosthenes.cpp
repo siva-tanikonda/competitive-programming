@@ -5,14 +5,20 @@ Time Complexity: O(nlg(lg(n)))
 Space Complexity: O(n)
 */
 
-struct sieve_of_eratosthenes{
+struct sieve_of_eratosthenes {
+
     vector<bool> arr;
-    void init(int n){
-        arr.resize(n + 1, true);
+
+    //Generates a table of which numbers are prime and which aren't
+    void init(int n) {
+        arr = vector<bool>(n + 1, true);
         arr[0] = arr[1] = false;
         for(int i = 2; i <= n; i++)
             if(arr[i] && (ll)i * i <= n)
                 for(int j = i * i; j <= n; j += i) arr[j] = false;
     }
-    bool query(int x){ return arr[x]; }
+
+    //Tells us if a certain number is prime
+    bool query(int x) { return arr[x]; }
+
 };

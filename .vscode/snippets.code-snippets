@@ -158,5 +158,23 @@
             "};"
         ],
         "description": ""
+    },
+    "Sieve of Eratosthenes": {
+        "prefix": "cp_sieve_of_eratosthenes",
+        "body": [
+            "struct sieve_of_eratosthenes {\r",
+            "    vector<bool> arr;\r",
+            "    void init(int n) {\r",
+            "        arr = vector<bool>(n + 1, true);\r",
+            "        arr[0] = arr[1] = false;\r",
+            "        for(int i = 2; i <= n; i++)\r",
+            "            if(arr[i] && (ll)i * i <= n)\r",
+            "                for(int j = i * i; j <= n; j += i) arr[j] = false;\r",
+            "    }\r",
+            "    bool query(int x) { return arr[x]; }\r",
+            "};"
+        ],
+        "description": ""
     }
+
 }
