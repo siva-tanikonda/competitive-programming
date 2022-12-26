@@ -175,6 +175,32 @@
             "};"
         ],
         "description": ""
+    },
+    "Factorials Class": {
+        "prefix": "cp_factorials_class",
+        "body": [
+            "struct factorials_class {\r",
+            "    vector<int> fac, inv;\r",
+            "    void init(int n) {\r",
+            "        fac = vector<int>(n + 1);\r",
+            "        inv = vector<int>(n + 1);\r",
+            "        fac[0] = inv[0] = 1;\r",
+            "        for (int i = 1; i <= n; i++) {\r",
+            "            fac[i] = mod.mul(fac[i - 1], i);\r",
+            "            inv[i] = mod.inv(fac[i]);\r",
+            "        }\r",
+            "    }\r",
+            "    int query(int x) { return fac[x]; }\r",
+            "    int prm(int x, int y) {\r",
+            "        if (y > x) return 0;\r",
+            "        return mod.mul(fac[x], inv[x - y]);\r",
+            "    }\r",
+            "    int cmb(int x, int y) {\r",
+            "        if (y > x) return 0;\r",
+            "        return mod.mul(prm(x, y), inv[y]);\r",
+            "    }\r",
+            "};"
+        ],
+        "description": ""
     }
-
 }
