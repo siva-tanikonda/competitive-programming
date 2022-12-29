@@ -14,7 +14,7 @@ template<class T> struct dijkstra {
         for (int i = 1; i <= n; i++) adj[i] = inp[i];
     }
     void init(vector<vector<pair<int, T>>> &inp) { adj = inp; }
-    vector<T> getPaths(int src) {
+    void getPaths(int src) {
         dst = vector<T>(adj.size(), -1);
         pre = vector<int>(adj.size());
         set<pair<T, int>> que;
@@ -31,6 +31,5 @@ template<class T> struct dijkstra {
                     que.emplace(dst[i.first], i.first);
                 }
         }
-        return dst;
     }
 };

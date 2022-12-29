@@ -202,5 +202,39 @@
             "};"
         ],
         "description": ""
+    },
+    "Dijkstra's Algorithm": {
+        "prefix": "cp_dijkstra",
+        "body": [
+            "template<class T> struct dijkstra {\r",
+            "    vector<vector<pair<int, T>>> adj;\r",
+            "    vector<T> dst;\r",
+            "    vector<int> pre;\r",
+            "    void init(int n, vector<pair<int, T>> inp[]) {\r",
+            "        adj = vector<vector<pair<int, T>>>(n + 1, vector<pair<int, T>>());\r",
+            "        for (int i = 1; i <= n; i++) adj[i] = inp[i];\r",
+            "    }\r",
+            "    void init(vector<vector<pair<int, T>>> &inp) { adj = inp; }\r",
+            "    void getPaths(int src) {\r",
+            "        dst = vector<T>(adj.size(), -1);\r",
+            "        pre = vector<int>(adj.size());\r",
+            "        set<pair<T, int>> que;\r",
+            "        que.emplace(0, src);\r",
+            "        dst[src] = 0;\r",
+            "        while (!que.empty()) {\r",
+            "            int vtx = que.begin()->second;\r",
+            "            que.erase(que.begin());\r",
+            "            for (auto &i : adj[vtx])\r",
+            "                if (dst[i.first] == -1 || dst[i.first] > dst[vtx] + i.second) {\r",
+            "                    que.erase({ dst[i.first], i.first });\r",
+            "                    dst[i.first] = dst[vtx] + i.second;\r",
+            "                    pre[i.first] = vtx;\r",
+            "                    que.emplace(dst[i.first], i.first);\r",
+            "                }\r",
+            "        }\r",
+            "    }\r",
+            "};"
+        ],
+        "description": ""
     }
 }
