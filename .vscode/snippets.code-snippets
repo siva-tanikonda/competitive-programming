@@ -84,7 +84,7 @@
         "description": ""
     },
     "Modular Arithmetic Class": {
-        "prefix": "cp_modular_arithmetic_class",
+        "prefix": "cp_modular_arithmetic",
         "body": [
             "struct modular_arithmetic {\r",
             "    const int m = 1e9 + 7; //const int m = 998244353;\r",
@@ -177,9 +177,9 @@
         "description": ""
     },
     "Factorials Class": {
-        "prefix": "cp_factorials_class",
+        "prefix": "cp_factorials",
         "body": [
-            "struct factorials_class {\r",
+            "struct factorials {\r",
             "    vector<int> fac, inv;\r",
             "    void init(int n) {\r",
             "        fac = vector<int>(n + 1);\r",

@@ -5,7 +5,7 @@ Time Complexity: [Build]O(nlg(n)) [Query]O(1)
 Space Complexity: O(n)
 */
 
-struct factorials_class {
+struct factorials {
 
     vector<int> fac, inv;
 
