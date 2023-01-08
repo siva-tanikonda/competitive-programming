@@ -236,5 +236,30 @@
             "};"
         ],
         "description": ""
+    },
+    "Sparse Table": {
+        "prefix": "cp_sparse_table",
+        "body": [
+            "template<class T> struct sparse_table {\r",
+            "    vector<vector<T>> jmp;\r",
+            "    void init(int n, T a[]) {\r",
+            "        vector<T> arr(n);\r",
+            "        for (int i = 0; i < n; i++) arr[i] = a[i];\r",
+            "        init(arr);\r",
+            "    }\r",
+            "    void init(vector<T> &arr){\r",
+            "        int n = (int)arr.size(), dpt = 32 - __builtin_clz(n);\r",
+            "        jmp = vector<vector<T>>(dpt, arr);\r",
+            "        for(int i = 0; i < dpt - 1; i++)\r",
+            "            for(int j = 0; j < n; j++)\r",
+            "                jmp[i + 1][j] = min(jmp[i][j], jmp[i][min(j + (1 << i), n - 1)]);\r",
+            "    }\r",
+            "    T query(int l, int r) {\r",
+            "        int dpt = 31 - __builtin_clz(r - l + 1);\r",
+            "        return min(jmp[dpt][l], jmp[dpt][r - (1 << dpt) + 1]);\r",
+            "    }\r",
+            "};"
+        ],
+        "description": ""
     }
 }
