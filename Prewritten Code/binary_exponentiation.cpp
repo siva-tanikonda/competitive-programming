@@ -1,14 +1,14 @@
 /*
 BINARY EXPONENTIATION
 Purpose: This quickly calculates exponents
-Time Complexity: O(lg(n))
+Time Complexity: O(log(n))
 Space Complexity: O(1)
 */
 
-ll binpow(ll a, ll b, ll mod){
-    if(!b) return 1 % mod;
-    ll res = binpow(a, b / 2);
-    res = (res * res) % mod;
-    if(b % 2) res = (res * a) % mod;
+ll binary_exponentiation(ll a, ll b){
+    if(!b) return 1;
+    ll res = binary_exponentiation(a, b / 2);
+    res = res * res;
+    if(b % 2) res = res * a;
     return res;
 }

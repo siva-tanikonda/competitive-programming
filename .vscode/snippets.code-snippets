@@ -261,5 +261,47 @@
             "};"
         ],
         "description": ""
+    },
+    "Matrix Operations Class": {
+        "prefix": "cp_matrix_operations",
+        "body": [
+            "struct matrix_operations {\r",
+            "    vector<vector<ll>> add(vector<vector<ll>> a, vector<vector<ll>> b) {\r",
+            "        vector<vector<ll>> res(a.size(), vector<ll>(a[0].size()));\r",
+            "        for (int i = 0; i < (int)a.size(); i++)\r",
+            "            for (int j = 0; j < (int)a[0].size(); j++)\r",
+            "                res[i][j] = a[i][j] + b[i][j];\r",
+            "        return res;\r",
+            "    }\r",
+            "    vector<vector<ll>> sub(vector<vector<ll>> a, vector<vector<ll>> b) {\r",
+            "        vector<vector<ll>> res(a.size(), vector<ll>(a[0].size()));\r",
+            "        for (int i = 0; i < (int)a.size(); i++)\r",
+            "            for (int j = 0; j < (int)a[0].size(); j++)\r",
+            "                res[i][j] = a[i][j] - b[i][j];\r",
+            "        return res;\r",
+            "    }\r",
+            "    vector<vector<ll>> mul(vector<vector<ll>> a, vector<vector<ll>> b) {\r",
+            "        vector<vector<ll>> res(a.size(), vector<ll>(b[0].size()));\r",
+            "        for (int i = 0; i < (int)a.size(); i++)\r",
+            "            for (int j = 0; j < (int)b[0].size(); j++)\r",
+            "                for (int k = 0; k < (int)a[0].size(); k++)\r",
+            "                    res[i][j] += a[i][k] * b[k][j];\r",
+            "        return res;\r",
+            "    }\r",
+            "    vector<vector<ll>> identity(int n) {\r",
+            "        vector<vector<ll>> res(n, vector<ll>(n));\r",
+            "        for (int i = 0; i < n; i++) res[i][i] = 1;\r",
+            "        return res;\r",
+            "    }\r",
+            "    vector<vector<ll>> pow(vector<vector<ll>> x, ll n) {\r",
+            "        if (!n) return identity(x.size());\r",
+            "        vector<vector<ll>> res = pow(x, n / 2);\r",
+            "        res = mul(res, res);\r",
+            "        if (n % 2) res = mul(res, x);\r",
+            "        return res;\r",
+            "    }\r",
+            "};"
+        ],
+        "description": ""
     }
 }
