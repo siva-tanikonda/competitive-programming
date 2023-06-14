@@ -3,7 +3,6 @@ MATRIX OPERATIONS CLASS
 Purpose: This is just a class that supports basic matrix operations
 */
 
-
 struct matrix_operations {
 
     //Element-wise addition of two matrices (Time Complexity: O(nm))
