@@ -22,7 +22,7 @@ struct modular_arithmetic {
         return (((x % m + m) % m) * ((y % m + m) % m)) % m;
     }
 
-    //Returns x^y mod m (binary exponentiation) (Time Complexity: O(log(N)))
+    //Returns x^y mod m (Time Complexity: O(log(N)))
     int pow(ll x, ll y) {
         if (!y) return 1 % m;
         ll ans = pow(x, y / 2);
@@ -31,12 +31,12 @@ struct modular_arithmetic {
         return ans;
     }
 
-    //Returns modular inverse of x mod m (using Fermat's Little Theorem) (Time Complexity: O(log(N)))
+    //Returns modular inverse of x mod m (Time Complexity: O(log(N)))
     int inv(ll x) {
         return pow(x, m - 2);
     }
 
-    //Returns (xy^(-1)) mod m (using the modular inverse) (Time Complexity: O(log(N)))
+    //Returns (xy^(-1)) mod m (Time Complexity: O(log(N)))
     int div(ll x, ll y) {
         return ((x % m) * inv(y)) % m;
     }
