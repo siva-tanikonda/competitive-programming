@@ -3,5 +3,6 @@ Environment/*
 
 .vscode/*
 !.vscode/snippets.code-snippets
+!.vscode/tasks.json
 
 .DS_Store

@@ -1,0 +1,211 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build",
+            "command": "g++",
+            "detail": "",
+            "args": [
+                "-std=c++17",
+                "-fdiagnostics-color=always",
+                "-g",
+                "-Wall",
+                "-Wno-unused-result",
+                "-Wno-pragmas",
+                "-Wno-attributes",
+                "${fileBasename}",
+                "-o",
+                "${fileDirname}/build/${fileBasenameNoExtension}_compiled"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "clear": false,
+                "showReuseMessage": false
+            },
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Build & Run",
+            "command": "g++",
+            "detail": "",
+            "args": [
+                "-std=c++17",
+                "-fdiagnostics-color=always",
+                "-g",
+                "-Wall",
+                "-Wno-unused-result",
+                "-Wno-pragmas",
+                "-Wno-attributes",
+                "${fileBasename}",
+                "-o",
+                "${fileDirname}/build/${fileBasenameNoExtension}_compiled",
+                "&&",
+                "${fileDirname}/build/${fileBasenameNoExtension}_compiled",
+                "<",
+                "${fileDirname}/input.txt"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "clear": false,
+                "showReuseMessage": false
+            },
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Build & Run (Output to File)",
+            "command": "g++",
+            "detail": "",
+            "args": [
+                "-std=c++17",
+                "-fdiagnostics-color=always",
+                "-g",
+                "-Wall",
+                "-Wno-unused-result",
+                "-Wno-pragmas",
+                "-Wno-attributes",
+                "${fileBasename}",
+                "-o",
+                "${fileDirname}/build/${fileBasenameNoExtension}_compiled",
+                "&&",
+                "${fileDirname}/build/${fileBasenameNoExtension}_compiled",
+                "<",
+                "${fileDirname}/input.txt",
+                ">",
+                "${fileBasenameNoExtension}_output.txt"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "clear": false,
+                "showReuseMessage": false
+            },
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Build & Run (Interactive)",
+            "command": "g++",
+            "detail": "",
+            "args": [
+                "-std=c++17",
+                "-fdiagnostics-color=always",
+                "-g",
+                "-Wall",
+                "-Wno-unused-result",
+                "-Wno-pragmas",
+                "-Wno-attributes",
+                "${fileBasename}",
+                "-o",
+                "${fileDirname}/build/${fileBasenameNoExtension}_compiled",
+                "&&",
+                "${fileDirname}/build/${fileBasenameNoExtension}_compiled"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "clear": false,
+                "showReuseMessage": false
+            },
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Stress Test",
+            "command": "python",
+            "detail": "",
+            "args": [
+                "../stress_tester.py",
+                "stress",
+                "${fileBasenameNoExtension}",
+                "${fileDirname}",
+                "windows"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "clear": false,
+                "showReuseMessage": false
+            },
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Constructive Test",
+            "command": "python",
+            "detail": "",
+            "args": [
+                "../stress_tester.py",
+                "constructive",
+                "${fileBasenameNoExtension}",
+                "${fileDirname}",
+                "windows"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "clear": false,
+                "showReuseMessage": false
+            },
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
