@@ -391,5 +391,51 @@
             "};"
         ],
         "description": ""
+    },
+    "Knuth-Morris-Pratt Algorithm": {
+        "prefix": "cp_kmp",
+        "body": [
+            "vector<bool> kmp(string s, string t) {\r",
+            "    int n = s.length();\r",
+            "    int m = t.length();\r",
+            "    if (!n || !m || m > n) return vector(n);\r",
+            "    vector<int> pat(m);\r",
+            "    pat[0] = 0;\r",
+            "    int i = 1, j = 0;\r",
+            "    while (i < m) {\r",
+            "        if (t[i] == t[j]) pat[i++] = ++j;\r",
+            "        else if (j > 0) j = pat[j - 1];\r",
+            "        else i++;\r",
+            "    }\r",
+            "    vector<bool> ex(n);\r",
+            "    i = 0, j = 0;\r",
+            "    while (i < n) {\r",
+            "        if (s[i] == t[j]) {\r",
+            "            j++;\r",
+            "            if (j >= m) ex[i - m + 1] = true, j = pat[j - 1];\r",
+            "            i++;\r",
+            "        } else if (j > 0) j = pat[j - 1];\r",
+            "        else i++;\r",
+            "    }\r",
+            "    return ex;\r",
+            "}"
+        ],
+        "description": ""
+    },
+    "Binary Search": {
+        "prefix": "cp_binary_search",
+        "body": [
+            "template<class T> T binary_search(vector<T> &a, T val) {\r",
+            "    int n = a.size();\r",
+            "    T l = 0, r = n - 1;\r",
+            "    while (l < r) {\r",
+            "        int mid = l + (r - l) / 2;\r",
+            "        if (val <= a[mid]) r = mid;\r",
+            "        else l = mid + 1;\r",
+            "    }\r",
+            "    return (a[l] == val) ? l : -1;\r",
+            "}"
+        ],
+        "description": ""
     }
 }

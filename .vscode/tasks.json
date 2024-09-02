@@ -16,7 +16,7 @@
                 "-Wno-attributes",
                 "${fileBasename}",
                 "-o",
-                "${fileDirname}/build/${fileBasenameNoExtension}_compiled"
+                "./Build/${fileBasenameNoExtension}_compiled.out"
             ],
             "presentation": {
                 "echo": true,
@@ -51,11 +51,11 @@
                 "-Wno-attributes",
                 "${fileBasename}",
                 "-o",
-                "${fileDirname}/build/${fileBasenameNoExtension}_compiled",
+                "./Build/${fileBasenameNoExtension}_compiled.out",
                 "&&",
-                "${fileDirname}/build/${fileBasenameNoExtension}_compiled",
+                "./Build/${fileBasenameNoExtension}_compiled.out",
                 "<",
-                "${fileDirname}/input.txt"
+                "./input.txt"
             ],
             "presentation": {
                 "echo": true,
@@ -90,13 +90,13 @@
                 "-Wno-attributes",
                 "${fileBasename}",
                 "-o",
-                "${fileDirname}/build/${fileBasenameNoExtension}_compiled",
+                "./Build/${fileBasenameNoExtension}_compiled.out",
                 "&&",
-                "${fileDirname}/build/${fileBasenameNoExtension}_compiled",
+                "./Build/${fileBasenameNoExtension}_compiled.out",
                 "<",
-                "${fileDirname}/input.txt",
+                "./input.txt",
                 ">",
-                "${fileBasenameNoExtension}_output.txt"
+                "./${fileBasenameNoExtension}_output.txt"
             ],
             "presentation": {
                 "echo": true,
@@ -131,9 +131,9 @@
                 "-Wno-attributes",
                 "${fileBasename}",
                 "-o",
-                "${fileDirname}/build/${fileBasenameNoExtension}_compiled",
+                "./Build/${fileBasenameNoExtension}_compiled.out",
                 "&&",
-                "${fileDirname}/build/${fileBasenameNoExtension}_compiled"
+                "./Build/${fileBasenameNoExtension}_compiled.out"
             ],
             "presentation": {
                 "echo": true,
