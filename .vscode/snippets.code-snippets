@@ -425,12 +425,13 @@
     "Binary Search": {
         "prefix": "cp_binary_search",
         "body": [
-            "template<class T> T binary_search(vector<T> &a, T val) {\r",
-            "    int n = a.size();\r",
+            "template<class T>\r",
+            "T binary_search(vector<T> &arr, T val) {\r",
+            "    int n = arr.size();\r",
             "    T l = 0, r = n - 1;\r",
             "    while (l < r) {\r",
             "        int mid = l + (r - l) / 2;\r",
-            "        if (val <= a[mid]) r = mid;\r",
+            "        if (val <= arr[mid]) r = mid;\r",
             "        else l = mid + 1;\r",
             "    }\r",
             "    return (a[l] == val) ? l : -1;\r",
