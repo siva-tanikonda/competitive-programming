@@ -4,9 +4,13 @@
         {
             "type": "shell",
             "label": "Build",
-            "command": "g++",
+            "command": "mkdir",
             "detail": "",
             "args": [
+                "-p",
+                "Build",
+                "&&",
+                "g++",
                 "-std=c++17",
                 "-fdiagnostics-color=always",
                 "-g",
@@ -39,9 +43,13 @@
         {
             "type": "shell",
             "label": "Build & Run",
-            "command": "g++",
+            "command": "mkdir",
             "detail": "",
             "args": [
+                "-p",
+                "Build",
+                "&&",
+                "g++",
                 "-std=c++17",
                 "-fdiagnostics-color=always",
                 "-g",
@@ -78,9 +86,13 @@
         {
             "type": "shell",
             "label": "Build & Run (Output to File)",
-            "command": "g++",
+            "command": "mkdir",
             "detail": "",
             "args": [
+                "-p",
+                "Build",
+                "&&",
+                "g++",
                 "-std=c++17",
                 "-fdiagnostics-color=always",
                 "-g",
@@ -119,9 +131,13 @@
         {
             "type": "shell",
             "label": "Build & Run (Interactive)",
-            "command": "g++",
+            "command": "mkdir",
             "detail": "",
             "args": [
+                "-p",
+                "Build",
+                "&&",
+                "g++",
                 "-std=c++17",
                 "-fdiagnostics-color=always",
                 "-g",
@@ -162,8 +178,7 @@
                 "../stress_tester.py",
                 "stress",
                 "${fileBasenameNoExtension}",
-                "${fileDirname}",
-                "windows"
+                "${fileDirname}"
             ],
             "presentation": {
                 "echo": true,
@@ -189,8 +204,7 @@
                 "../stress_tester.py",
                 "constructive",
                 "${fileBasenameNoExtension}",
-                "${fileDirname}",
-                "windows"
+                "${fileDirname}"
             ],
             "presentation": {
                 "echo": true,
