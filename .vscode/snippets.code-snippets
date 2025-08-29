@@ -1,5 +1,46 @@
 {
-    "Template": {
+	"Fenwick Tree": {
+		"prefix": "cp_fenwick_tree",
+		"description": "",
+		"scope": "cpp",
+		"body": [
+			"template <class T> struct fenwick_tree {\r",
+			"\r",
+			"    // Stores the actual binary-indexed tree\r",
+			"    vector<T> bit;\r",
+			"\r",
+			"    // Constructs a binary-indexed tree of all 0s (Time Complexity: O(N))\r",
+			"    void init(int n) { bit = vector<T>(n, 0); }\r",
+			"\r",
+			"    // Constructs a binary-indexed tree based on an array (Time Complexity: O(N))\r",
+			"    void init (vector<T> arr) {\r",
+			"        int n = arr.size();\r",
+			"        bit = vector<T>(n, 0);\r",
+			"        for (int i = 0; i < n; i++) {\r",
+			"            bit[i] += arr[i];\r",
+			"            int ni = i | (i + 1);\r",
+			"            if (ni < n) bit[ni] += bit[i];\r",
+			"        }\r",
+			"    }\r",
+			"\r",
+			"    // Updates the element in the index pos (Time Complexity: O(log(N)))\r",
+			"    void update(int idx, T add) {\r",
+			"        for (int i = idx; i < (int)bit.size(); i |= i + 1)\r",
+			"            bit[i] += add;\r",
+			"    }\r",
+			"\r",
+			"    // Gives us the sum of all elements in the range [0, pos] (Time Complexity: O(log(N)))\r",
+			"    T query(int idx) {\r",
+			"        T sum = 0;\r",
+			"        for (int i = idx; i >= 0; i = (i & (i + 1)) - 1)\r",
+			"            sum += bit[i];\r",
+			"        return sum;\r",
+			"    }\r",
+			"\r",
+			"};"
+		]
+	},
+	"Template": {
         "prefix": "cp_template",
         "body": [
             "#pragma GCC optimize(\"unroll-loops, O3\")\r",
@@ -22,7 +63,8 @@
             "    return 0;\r",
             "}"
         ],
-        "description": ""
+		"description": "",
+		"scope": "cpp"
     },
     "Multiple Testcases Template": {
         "prefix": "cp_multiple_testcases_template",
@@ -53,7 +95,8 @@
             "    return 0;\r",
             "}"
         ],
-        "description": ""
+		"description": "",
+		"scope": "cpp"
     },
 	"Google Code Jam Template": {
         "prefix": "cp_google_code_jam_template",
@@ -87,7 +130,8 @@
             "    return 0;\r",
             "}"
         ],
-        "description": ""
+		"description": "",
+		"scope": "cpp"
     },
     "Constructive Tester Template": {
         "prefix": "cp_constructive_template_tester",
