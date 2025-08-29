@@ -1,7 +1,7 @@
 /*
 FENWICK TREE
 Purpose: This allows for quick prefix sum/minimum/etc. queries and updates in an array
-Space Complexity: O(n)
+Space Complexity: O(N)
 */
 
 template <class T> struct fenwick_tree {
