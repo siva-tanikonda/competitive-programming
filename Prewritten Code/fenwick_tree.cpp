@@ -1,26 +1,39 @@
 /*
 FENWICK TREE
-Purpose: This allows for quick prefix queries and updates in an array of length n
+Purpose: This allows for quick prefix sum/minimum/etc. queries and updates in an array
 Space Complexity: O(n)
 */
 
 template <class T> struct fenwick_tree {
 
-    vector<T> arr;
+    // Stores the actual binary-indexed tree
+    vector<T> bit;
 
-    void init(int n) { arr = vector<int>(n + 1, 0); }
+    // Constructs a binary-indexed tree of all 0s
+    void init(int n) { bit = vector<T>(n, 0); }
+
+    // Constructs a binary-indexed tree based on an array (Time Complexity: O(N))
+    void init (vector<T> arr) {
+        int n = arr.size();
+        bit = vector<T>(n, 0);
+        for (int i = 0; i < n; i++) {
+            bit[i] += arr[i];
+            int ni = i | (i + 1);
+            if (ni < n) bit[ni] += bit[i];
+        }
+    }
 
     //Updates the element in the index pos (Time Complexity: O(log(N)))
-    void update(int pos, T add) {
-        for (; pos < (int)arr.size(); pos |= pos + 1)
-            arr[pos] += add;
+    void update(int idx, T add) {
+        for (int i = idx; i < (int)bit.size(); i |= i + 1)
+            bit[i] += add;
     }
 
     //Gives us the sum of all elements in the range [0, pos] (Time Complexity: O(log(N)))
-    T query(int pos) {
+    T query(int idx) {
         T sum = 0;
-        for (; pos >= 0; pos = (pos & (pos + 1)) - 1)
-            sum += arr[pos];
+        for (int i = idx; i >= 0; i = (i & (i + 1)) - 1)
+            sum += bit[i];
         return sum;
     }
 
