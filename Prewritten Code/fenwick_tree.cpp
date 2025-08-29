@@ -13,7 +13,7 @@ template <class T> struct fenwick_tree {
     void init(int n) { bit = vector<T>(n, 0); }
 
     // Constructs a binary-indexed tree based on an array (Time Complexity: O(N))
-    void init (vector<T> arr) {
+    void init (const vector<T> &arr) {
         int n = arr.size();
         bit = vector<T>(n, 0);
         for (int i = 0; i < n; i++) {
