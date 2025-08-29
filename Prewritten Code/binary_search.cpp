@@ -1,6 +1,6 @@
 /*
 BINARY SEARCH
-Purpose: Finds the index of an element in a sorted list
+Purpose: Quickly finds the index of an element in a sorted list
 Time Complexity: O(log(N))
 Space Complexity: O(1)
 */
