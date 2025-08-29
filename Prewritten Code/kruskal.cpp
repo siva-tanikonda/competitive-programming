@@ -1,8 +1,8 @@
 /*
 KRUSKAL'S ALGORITHM
 Purpose: calculates the minimum-spanning tree for a given undirected graph
-Time Complexity: O(M*log(M))
-Space Complexity: O(M)
+Time Complexity: O(M*(log(M)+alpha(N))+N)
+Space Complexity: O(M+N)
 */
 
 template <class T> vector<tuple<T, int, int>> kruskal(int n, vector<tuple<T, int, int>> edg) {
