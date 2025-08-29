@@ -9,7 +9,7 @@ template <class T> struct fenwick_tree {
     // Stores the actual binary-indexed tree
     vector<T> bit;
 
-    // Constructs a binary-indexed tree of all 0s
+    // Constructs a binary-indexed tree of all 0s (Time Complexity: O(N))
     void init(int n) { bit = vector<T>(n, 0); }
 
     // Constructs a binary-indexed tree based on an array (Time Complexity: O(N))
