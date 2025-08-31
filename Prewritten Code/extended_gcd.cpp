@@ -1,6 +1,6 @@
 /*
 EXTENDED GCD
-Purpose: This gives a single solution to an equation of the form: ax + by = gcd(a, b)
+Purpose: This gives one of the solutions to an equation of the form: ax + by = gcd(a, b)
 Time Complexity: O(log(N))
 Space Complexity: O(1)
 */
