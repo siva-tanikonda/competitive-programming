@@ -1,47 +1,38 @@
 /*
 MODULAR ARITHMETIC CLASS
-Purpose: This is just a class that supports modular arithmetic operations (only with a prime modulus)
+Purpose: This is a class that supports basic modular arithmetic for a prime modulus
+Space Complexity: O(1)
 */
 
-struct modular_arithmetic {
+template <class T> struct modular_arithmetic {
 
-    const int m = 1e9 + 7; //const int m = 998244353;
+    // The modulus we want to use
+    const int m = 1e9 + 7;
+    // const int m = 998244353;
 
-    //Returns (x + y) mod m (Time Complexity: O(1))
-    int add(ll x, ll y) {
-        return ((x % m + m) % m + (y % m + m) % m) % m;
+    // Calculates (a + b) mod m (Time Complexity: O(1))
+    int add(T a, T b) { return (a % m + b % m) % m; }
+
+    // Calculates (a - b) mod m (Time Complexity: O(1))
+    int sub(T a, T b) { return ((a % m - b % m) % m + m) % m; }
+
+    // Calculates (a * b) mod m (Time Complexity: O(1))
+    int mul(T a, T b) { return ((T)(a % m) * (b % m)) % m; }
+
+    // Calculates (x ^ n) mod m (Time Complexity: O(log(N))) 
+    int pow(T x, T n) { 
+        if (!n) return 1;
+        int res = pow(x, n / 2);
+        res = mul(res, res);
+        if (n % 2) res = mul(res, x);
+        return res;
     }
 
-    //Returns (x - y) mod m (Time Complexity: O(1))
-    int sub(ll x, ll y) {
-        return (((x % m + m) % m - (y % m + m) % m) % m + m) % m;
-    }
+    // Calculates (x ^ -1) mod m (Time Complexity: O(log(M)))
+    int inv(T x) { return pow(x, m - 2); }
 
-    //Returns (xy) mod m (Time Complexity: O(1))
-    int mult(ll x, ll y) {
-        return (((x % m + m) % m) * ((y % m + m) % m)) % m;
-    }
-
-    //Returns x^y mod m (Time Complexity: O(log(N)))
-    int pow(ll x, ll y) {
-        if (!y) return 1 % m;
-        ll ans = pow(x, y / 2);
-        ans = (ans * ans) % m;
-        if (y % 2) ans = (ans * (x % m)) % m;
-        return ans;
-    }
-
-    //Returns modular inverse of x mod m (Time Complexity: O(log(N)))
-    int inv(ll x) {
-        return pow(x, m - 2);
-    }
-
-    //Returns (xy^(-1)) mod m (Time Complexity: O(log(N)))
-    int div(ll x, ll y) {
-        return ((x % m) * inv(y)) % m;
-    }
+    // Calculates (x * (y ^ -1)) mod m (Time Complexity: O(log(M)))
+    int div(T a, T b) { return mul(a, inv(b)); }
 
 };
-
-//Creates an instance of the class to use for operations
-modular_arithmetic mod;
+modular_arithmetic<TYPE> mod;
