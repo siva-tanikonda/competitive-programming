@@ -23,18 +23,23 @@ template <class T> struct fenwick_tree {
         }
     }
 
-    // Updates the element in the index pos (Time Complexity: O(log(N)))
+    // Updates the element in the index idx (Time Complexity: O(log(N)))
     void update(int idx, T add) {
         for (int i = idx; i < (int)bit.size(); i |= i + 1)
             bit[i] += add;
     }
 
-    // Gives us the sum of all elements in the range [0, pos] (Time Complexity: O(log(N)))
+    // Gives us the sum of all elements in the range [0, idx] (Time Complexity: O(log(N)))
     T query(int idx) {
         T sum = 0;
         for (int i = idx; i >= 0; i = (i & (i + 1)) - 1)
             sum += bit[i];
         return sum;
+    }
+
+    // Gives us the sum of all elements in the range [l, r] (Time Complexity: O(log(N)))
+    T query(int l, int r) {
+        return l ? (query(r) - query(l - 1)) : query(r);
     }
 
 };
