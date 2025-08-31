@@ -1,6 +1,6 @@
 /*
 SPARSE TABLE
-Purpose: This allows for fast range queries on static arrays
+Purpose: This allows for fast range queries on a static array
 Space Complexity: O(N*log(N))
 */
 
