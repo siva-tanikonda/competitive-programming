@@ -1,7 +1,7 @@
 /*
 MODULAR ARITHMETIC CLASS
 Purpose: This is a class that supports basic modular arithmetic for a prime modulus
-Space Complexity: O(1)
+Space Complexity: O(log(N))
 */
 
 template <class T> struct modular_arithmetic {

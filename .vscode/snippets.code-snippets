@@ -1,4 +1,18 @@
 {
+	"Binary Exponentiation": {
+		"prefix": "cp_exponent",
+		"description": "",
+		"scope": "cpp",
+		"body": [
+			"template <class T> T exponent(T x, T n){",
+			"    if(!n) return 1;",
+			"    T res = exponent(x, n / 2);",
+			"    res = res * res;",
+			"    if(n % 2) res = res * x;",
+			"    return res;",
+			"}"
+		]
+	},
 	"Modular Arithmetic Class": {
 		"prefix": "cp_modular_arithmetic",
 		"description": "",
