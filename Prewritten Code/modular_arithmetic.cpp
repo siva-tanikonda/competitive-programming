@@ -17,7 +17,7 @@ template <class T> struct modular_arithmetic {
     int sub(T a, T b) { return ((a % m - b % m) % m + m) % m; }
 
     // Calculates (a * b) mod m (Time Complexity: O(1))
-    int mul(T a, T b) { return ((T)(a % m) * (b % m)) % m; }
+    int mul(T a, T b) { return ((a % m) * (b % m)) % m; }
 
     // Calculates (x ^ n) mod m (Time Complexity: O(log(N))) 
     int pow(T x, T n) { 
