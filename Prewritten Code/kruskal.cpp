@@ -5,7 +5,7 @@ Time Complexity: O(M*(log(M)+alpha(N))+N)
 Space Complexity: O(M+N)
 */
 
-template <class T> vector<tuple<T, int, int>> kruskal(int n, vector<tuple<T, int, int>> edg) {
+template <typename T> vector<tuple<T, int, int>> kruskal(int n, vector<tuple<T, int, int>> edg) {
     union_find dsu;
     dsu.init(n, true);
     sort(edg.begin(), edg.end());

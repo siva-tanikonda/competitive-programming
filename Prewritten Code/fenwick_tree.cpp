@@ -4,7 +4,7 @@ Purpose: This allows for quick prefix sum/minimum/etc. queries and updates in an
 Space Complexity: O(N)
 */
 
-template <class T> struct fenwick_tree {
+template <typename T> struct fenwick_tree {
 
     // Stores the actual binary-indexed tree
     vector<T> bit;

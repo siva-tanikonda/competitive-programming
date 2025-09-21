@@ -5,7 +5,7 @@ Time Complexity: O(log(N))
 Space Complexity: O(1)
 */
 
-template<class T> T binary_search(vector<T> &arr, T val) {
+template<typename T> T binary_search(vector<T> &arr, T val) {
     int n = arr.size();
     int l = 0, r = n - 1;
     while (l < r) {

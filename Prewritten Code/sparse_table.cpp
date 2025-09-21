@@ -4,7 +4,7 @@ Purpose: This allows for fast range queries on a static array
 Space Complexity: O(N*log(N))
 */
 
-template <class T> struct sparse_table {
+template <typename T> struct sparse_table {
 
     // Stores the log-length range queries
     vector<vector<T>> arr;

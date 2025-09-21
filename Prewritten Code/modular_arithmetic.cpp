@@ -4,7 +4,7 @@ Purpose: This is a class that supports basic modular arithmetic for a prime modu
 Space Complexity: O(log(N))
 */
 
-template <class T> struct modular_arithmetic {
+template <typename T> struct modular_arithmetic {
 
     // The modulus we want to use
     const int m = 1e9 + 7;
